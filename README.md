@@ -2,10 +2,11 @@
 1. pastikan sudah ada php dan composer terinstall.  
 2. clone repo ini
 ```bash
-git clone https://github.com/darlisherumurti/pbkk_2024_darlis pbkk_24
+git clone https://github.com/darlisherumurti/pbkk_2024_darlis <nama folder>
 ```
-3. install dependency
+3. masuk ke folder dan install dependency
 ```bash
+cd <nama folder>
 composer install
 ```
 4. ganti atau copy file `.env.example` menjadi `.env`    
