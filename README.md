@@ -8,17 +8,21 @@ git clone https://github.com/darlisherumurti/pbkk_2024_darlis pbkk_24
 ```bash
 composer install
 ```
-4. ganti atau copy file *.env.example* menjadi *.env*    
-5. tambahkan #database.sqlite# pada folder /database. 
+4. ganti atau copy file `.env.example` menjadi `.env`    
+5. tambahkan `database.sqlite` pada folder /database. 
 6. jalankan perintah migration
 ```bash
 php artisan migrate
 ```
-7. jalankan perintah 
+7. jalankan perintah seed
+```bash
+php artisan db:seed
+```
+8. jalankan perintah 
 ```bash
 php artisan key:generate
 ```
-8. jalankan perintah untuk memulai
+9. jalankan perintah untuk memulai
 ```bash
  php artisan serve
 ``` 
