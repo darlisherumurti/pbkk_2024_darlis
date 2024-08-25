@@ -209,6 +209,12 @@
                         <p>Bilangan Prima</p>
                     </a>
                 </li>   
+                <li class="nav-item">
+                    <a href="{{ route('param') }}" class="nav-link {{ request()->is('pertemuan1/param*') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Routing Parameter</p>
+                    </a>
+                </li>   
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -270,7 +276,58 @@
             </ul>
           </li>
 
-
+          {{-- <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+                Level 1
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Level 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Level 2
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Level 3</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Level 3</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Level 3</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Level 2</p>
+                </a>
+              </li>
+            </ul>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -361,5 +418,6 @@
 <script src="/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/js/demo.js"></script>
+@yield('script')
 </body>
 </html>

@@ -47,4 +47,16 @@ class Pertemuan1Controller extends Controller
 
         return view('pertemuan1.fibonacci',compact('numberDetails'));
     }
+    
+    public function param1($param1 = ''){
+        $data['param1'] = $param1;
+        return view('pertemuan1.param1',compact('data'));
+    }
+
+    public function param2($param1 ='', $param2 =''){
+        $data['param1'] = $param1;
+        $data['param2'] = $param2;
+        return view('pertemuan1.param2',compact('data'));
+    }
+
 }
