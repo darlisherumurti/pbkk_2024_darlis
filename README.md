@@ -9,7 +9,7 @@ git clone https://github.com/darlisherumurti/pbkk_2024_darlis pbkk_24
 composer install
 ```
 4. ganti atau copy file *.env.example* menjadi *.env*    
-5. tambahkan database.sqlite pada folder /database. 
+5. tambahkan #database.sqlite# pada folder /database. 
 6. jalankan perintah migration
 ```bash
 php artisan migrate
