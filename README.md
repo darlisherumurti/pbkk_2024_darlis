@@ -1,5 +1,5 @@
 ##Cara menggunakan project ini##.   
-1 pastikan sudah ada php dan composer terinstall. 
+1 pastikan sudah ada php dan composer terinstall.  
 2 clone repo ini
 ```bash
 git clone https://github.com/darlisherumurti/pbkk_2024_darlis pbkk_24
