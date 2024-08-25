@@ -1,4 +1,4 @@
-##Cara menggunakan project ini##.   
+## Cara menggunakan project ini.     
 1 pastikan sudah ada php dan composer terinstall.  
 2 clone repo ini
 ```bash
