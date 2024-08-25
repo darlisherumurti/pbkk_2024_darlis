@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pertemuan1Controller;
 
@@ -16,6 +17,10 @@ Route::prefix('/pertemuan1')->group(function(){
  Route::get('/param/{param1}', [Pertemuan1Controller::class, 'param1'])->name('param1');
  Route::get('/param/{param1}/{param2}', [Pertemuan1Controller::class, 'param2'])->name('param2');
 
+});
+
+Route::prefix('/pertemuan2')->group(function(){
+    Route::resource('/crud-buku', BukuController::class);
 });
 
 Route::fallback(function () {
