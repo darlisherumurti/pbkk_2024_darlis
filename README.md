@@ -10,6 +10,15 @@ composer install
 ```
 4 ganti / copy file .env.example menjadi .env. 
 5 tambahkan database.sqlite pada folder /database. 
-6 jalankan perintah php artisan migrate
-7 jalankan perintah php artisan key:generate
-8 jalankan perintah php artisan serve untuk memulai
+6 jalankan perintah migration
+```bash
+php artisan migrate
+```
+7 jalankan perintah 
+```bash
+php artisan key:generate
+```
+8 jalankan perintah untuk memulai
+```bash
+ php artisan serve
+``` 
