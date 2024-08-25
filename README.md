@@ -10,7 +10,7 @@ cd <nama folder>
 composer install
 ```
 4. ganti atau copy file `.env.example` menjadi `.env`    
-5. tambahkan `database.sqlite` pada folder /database. 
+5. tambahkan `database.sqlite` pada folder `/database`   
 6. jalankan perintah migration
 ```bash
 php artisan migrate
