@@ -10,10 +10,13 @@ class BukuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-            $data['buku'] = Buku::all();
-            return view('pertemuan2.buku.index', compact('data'));
+        // $data['buku'] = Buku::all();
+        $search = $request->input('search');
+        $limit = $request->input('limit', 10); // Default limit is 10
+        $data['buku'] = Buku::Filter($search, $limit);
+        return view('pertemuan2.buku.index', compact('data','search','limit'));
     }
 
     /**

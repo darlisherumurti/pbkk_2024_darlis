@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Buku extends Model
 {
     use HasFactory;
-
+    use Filterable;
     // nama table di database
     // jika tidak didefinisi maka akan menggunakan berdasarkan nama class
     protected $table = 'buku';
