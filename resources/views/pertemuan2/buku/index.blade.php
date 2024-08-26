@@ -41,7 +41,7 @@
             </div>
 
         </div>
-        <div class="overflow-auto">
+        <div class="overflow-auto">`
             <table id="bukuTable" class="table table-bordered">
                 <thead>
                     <tr>
