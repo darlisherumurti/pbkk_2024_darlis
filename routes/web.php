@@ -1,8 +1,12 @@
 <?php
 
-use App\Http\Controllers\BukuController;
+use App\Http\Controllers\Pertemuan2Controller;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pertemuan1Controller;
+use App\Http\Controllers\Pertemuan3Controller;
+use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\AuthMiddleware;
 
 Route::get('/', function(){
     return view('layout.base');
@@ -19,9 +23,16 @@ Route::prefix('/pertemuan1')->group(function(){
 });
 
 Route::prefix('/pertemuan2')->group(function(){
-    Route::resource('/crud-buku', BukuController::class);
+    Route::resource('/crud-buku', Pertemuan2Controller::class);
 });
 
+Route::prefix('/pertemuan3')->group(function(){
+    Route::get('/', [Pertemuan3Controller::class,'index'])->name('pertemuan3.index')->middleware(AuthMiddleware::class);
+    Route::post('/login', [Pertemuan3Controller::class,'login'])->name('pertemuan3.login');
+    Route::post('/register', [Pertemuan3Controller::class,'register'])->name('pertemuan3.register');
+    Route::post('/logout', [Pertemuan3Controller::class,'logout'])->name('pertemuan3.logout');
+
+});
 Route::fallback(function () {
     return redirect('/');
 });
