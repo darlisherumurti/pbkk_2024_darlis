@@ -1,0 +1,9 @@
+1725095109-2535-276904942,1725095108.9679,GET,/pertemuan1/param,Closure,302,509.25922393799,request
+1725095109-7396-1631654460,1725095109.5022,GET,/,Closure,200,422.45388031006,request
+1725095112-3625-1447437393,1725095112.075,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,575.95205307007,request
+1725095141-6278-1702504214,1725095141.4094,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,473.1969833374,request
+1725095151-4595-1693905351,1725095151.2302,GET,/pertemuan2/crud-buku?limit=50&page=1,"App\Http\Controllers\BukuController@index",200,549.65090751648,request
+1725095162-4094-1333423829,1725095162.1783,GET,/pertemuan2/crud-buku?limit=50&page=1,"App\Http\Controllers\BukuController@index",200,578.21202278137,request
+1725095362-4749-1990398250,1725095362.292,GET,/pertemuan2/crud-buku?limit=50&page=1,"App\Http\Controllers\BukuController@index",200,387.28213310242,request
+1725095623-5031-212972003,1725095623.2412,GET,/pertemuan2/crud-buku?limit=10&page=1,"App\Http\Controllers\BukuController@index",200,543.06197166443,request
+1725095629-0779-404923094,1725095628.8184,GET,/pertemuan2/crud-buku?limit=10&page=1,"App\Http\Controllers\BukuController@index",200,464.27488327026,request
