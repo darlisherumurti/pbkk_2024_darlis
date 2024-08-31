@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
     use HasFactory;
+    use Filterable;
+    
     protected $table = 'kategori'; // Explicitly set the table name if necessary
 
     protected $fillable = [

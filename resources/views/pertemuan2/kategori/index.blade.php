@@ -27,7 +27,7 @@
                 </div>
             </form>
             <div class="d-flex">
-                {{ $data['kategori']->appends(['search' => $search, 'limit' => $limit])->links() }}
+                {{ $data['kategori']->appends(['search' => request()->get('search'), 'limit' => request()->get('limit')])->links() }}
                 <div class="ml-2">
                     <a href="{{ route('crud-kategori.create') }}" class="text-white">
                         <button class="btn btn-success">

@@ -28,7 +28,7 @@
                 </div>
             </form>
             <div class="d-flex">
-                {{ $data['buku']->appends(['search' => $search, 'limit' => $limit])->links() }}
+                {{ $data['buku']->appends(['search' => request()->get('search'), 'limit' => request()->get('limit')])->links() }}
                 <div class="ml-2">
                     <a href="{{ route('crud-buku.create') }}" class="text-white">
                         <button class="btn btn-success">

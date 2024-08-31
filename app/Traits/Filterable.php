@@ -3,6 +3,8 @@
 namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 trait Filterable
 {
@@ -11,22 +13,23 @@ trait Filterable
      *
      * @param Builder $query
      * @param string $search
+     * @param int $limit
      * @return Builder
      */
-    public function scopeFilter($query, $search = null,$limit = 10)
+    public function scopeFilter($query, Request $request)
     {
+        $search = $request->input('search');
+        $limit = $request->input('limit', 10);
+
         if ($search) {
-            $query->where(function ($q) use ($search) {
-                $q->where('judul', 'like', "%{$search}%")
-                  ->orWhere('id', 'like', "%{$search}%")
-                  ->orWhere('penulis', 'like', "%{$search}%")
-                  ->orWhere('penerbit', 'like', "%{$search}%")
-                  ->orWhere('kategori', 'like', "%{$search}%")
-                  ->orWhere('deskripsi', 'like', "%{$search}%")
-                  ->orWhere('isbn', 'like', "%{$search}%");
+            $columns = Schema::getColumnListing($this->getTable());
+            $query->where(function ($q) use ($search, $columns) {
+                foreach ($columns as $column) {
+                    $q->orWhere($column, 'like', "%{$search}%");
+                }
             });
         }
-        
-        return $query->paginate($limit); // Ganti 10 dengan jumlah item per halaman
+    
+        return $query->paginate($limit);
     }
 }

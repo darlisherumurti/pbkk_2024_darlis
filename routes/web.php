@@ -11,8 +11,8 @@ Route::get('/', function(){
 
 
 Route::prefix('/pertemuan2')->group(function(){
-    Route::resource('/crud-buku', BukuController::class);
-    Route::resource('/crud-kategori', KategoriController::class);
+    Route::resource('/crud-buku', BukuController::class)->parameters(['crud-buku' => 'buku']);
+    Route::resource('/crud-kategori', KategoriController::class)->parameters(['crud-kategori' => 'kategori']);
 });
 
 Route::fallback(function () {

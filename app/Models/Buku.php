@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Buku extends Model
 {
     use HasFactory;
-
+    use Filterable;
+    
     protected $table = 'buku';
 
     protected $fillable = [
@@ -26,4 +28,5 @@ class Buku extends Model
     {
         return $this->belongsToMany(Kategori::class, 'buku_kategori','buku_id', 'kategori_id'); // Explicitly define the pivot table name
     }
+    
 }
