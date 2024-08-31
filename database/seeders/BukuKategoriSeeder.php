@@ -19,7 +19,29 @@ class BukuKategoriSeeder extends Seeder
         $faker = Faker::create();
 
         // Seed Kategori Table
-        $kategoris = ['Fiction', 'Non-Fiction', 'Science', 'History', 'Biography'];
+        $kategoris = [
+            'Fiction', 
+            'Non-Fiction', 
+            'Science', 
+            'History', 
+            'Biography', 
+            'Fantasy', 
+            'Mystery', 
+            'Romance', 
+            'Thriller', 
+            'Self-Help', 
+            'Philosophy', 
+            'Art', 
+            'Travel', 
+            'Cooking', 
+            'Health', 
+            'Business', 
+            'Technology', 
+            'Poetry', 
+            'Children', 
+            'Graphic Novels'
+        ];
+        
         $kategoriIds = [];
 
         foreach ($kategoris as $kategori) {
@@ -42,7 +64,7 @@ class BukuKategoriSeeder extends Seeder
             ]);
 
             // Assign 1 to 3 random categories to each book
-            $randomKategoriIds = $faker->randomElements($kategoriIds, $faker->numberBetween(1, 3));
+            $randomKategoriIds = $faker->randomElements($kategoriIds, $faker->numberBetween(1, count($kategoris)));
             $buku->kategoris()->attach($randomKategoriIds);
         }
     }

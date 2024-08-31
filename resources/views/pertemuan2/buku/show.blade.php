@@ -5,9 +5,19 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <div class="form-group">
-                <label for="judul">Judul</label>
-                <p id="judul">{{ $data['buku']->judul }}</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id">ID</label>
+                        <p id="id">{{ $data['buku']->id }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="judul">Judul</label>
+                        <p id="judul">{{ $data['buku']->judul }}</p>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
