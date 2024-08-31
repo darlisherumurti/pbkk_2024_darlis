@@ -50,7 +50,11 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="kategori">Kategori</label>
-                        <p id="kategori">{{ $data['buku']->kategori }}</p>
+                        <br>
+                        @foreach ($data['buku']->kategoris as $k)
+                            <span class="badge badge-primary">{{ $k->nama }}</span>
+                            <!-- Adjust field name as needed -->
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -1,5 +1,7 @@
 @extends('layout.base')
-
+@push('styles')
+    <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+@endpush
 @section('title', 'Tambah Buku')
 @section('content')
     <div class="card">
@@ -83,15 +85,23 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="kategori">Kategori</label>
-                            <input type="text" class="form-control @error('kategori') is-invalid @enderror"
-                                id="kategori" name="kategori" value="{{ old('kategori') }}">
+                            <label for="kategori">Kategori</label><br>
+                            <select class="selectpicker w-100" id="kategori" name="kategori[]"
+                                class="form-control @error('kategori') is-invalid @enderror" multiple>
+                                @foreach ($data['kategori'] as $k)
+                                    <option value="{{ $k->id }}"
+                                        {{ in_array($k->id, old('kategori', [])) ? 'selected' : '' }}>
+                                        {{ $k->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
                             @error('kategori')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+
                     </div>
                 </div>
 
@@ -111,3 +121,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="/js/bootstrap-select.min.js"></script>
+@endpush

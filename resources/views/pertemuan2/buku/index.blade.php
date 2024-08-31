@@ -4,9 +4,7 @@
 @section('title', 'List Buku')
 
 @section('content')
-    <style>
 
-    </style>
     <div class="card p-3">
         <div class="">
             @if (session('success'))
@@ -73,7 +71,12 @@
                             <td>{{ $b->tahun_terbit }}</td>
                             <td>{{ $b->jumlah_halaman }}</td>
                             <td>{{ $b->isbn }}</td>
-                            <td>{{ $b->kategori }}</td>
+                            <td>
+                                @foreach ($b->kategoris as $kategori)
+                                    <span class="badge badge-primary">{{ $kategori->nama }}</span>
+                                    <!-- Adjust field name as needed -->
+                                @endforeach
+                            </td>
                             <td>{{ Str::limit($b->deskripsi, 30, '...') }}</td>
                             <td class="d-flex">
                                 <a href="{{ route('crud-buku.edit', $b->id) }}"
@@ -98,7 +101,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script>
         $(document).ready(function() {
             $('#bukuTable').DataTable({
@@ -108,4 +111,4 @@
             });
         });
     </script>
-@endsection
+@endpush

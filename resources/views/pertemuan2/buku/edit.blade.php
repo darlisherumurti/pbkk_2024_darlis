@@ -2,10 +2,14 @@
 
 @section('title', 'Edit Buku')
 
+@push('styles')
+    <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+@endpush
+
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('crud-buku.update', $data['buku']->id) }}" method="POST">
+            <form id="updateForm" action="{{ route('crud-buku.update', $data['buku']->id) }}" method="POST">
                 @csrf
                 @method('PUT') <!-- Menandakan bahwa ini adalah request untuk update -->
 
@@ -93,6 +97,26 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="kategori">Kategori</label>
+                            <select class="selectpicker w-100 @error('kategori') is-invalid @enderror" id="kategori"
+                                name="kategori[]" multiple>
+                                @foreach ($data['kategori'] as $k)
+                                    <option value="{{ $k->id }}"
+                                        {{ in_array($k->id, old('kategori', $data['buku-kategori'])) ? 'selected' : '' }}>
+                                        {{ $k->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('kategori')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    {{-- <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
                             <input type="text" class="form-control @error('kategori') is-invalid @enderror"
                                 id="kategori" name="kategori" value="{{ old('kategori', $data['buku']->kategori) }}">
                             @error('kategori')
@@ -101,7 +125,7 @@
                                 </span>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="form-group">
@@ -114,18 +138,29 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update Buku</button>
-                <a href="{{ route('crud-buku.index') }}" class="btn btn-warning">Kembali ke Daftar Buku</a>
-                <a href="{{ route('crud-buku.show', $data['buku']->id) }}" class="btn btn-warning">
-                    Kembali ke Detail Buku</a>
-                <form class="border-0" action="{{ route('crud-buku.destroy', $data['buku']->id) }}" method="POST"
-                    style="display:inline-block;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Hapus
-                        Buku</button>
-                </form>
+
+            </form>
+            <button id="submitBtn" type="submit" class="btn btn-primary">Update Buku</button>
+            <a href="{{ route('crud-buku.index') }}" class="btn btn-warning">Kembali ke Daftar Buku</a>
+            <a href="{{ route('crud-buku.show', $data['buku']->id) }}" class="btn btn-warning">
+                Kembali ke Detail Buku</a>
+            <form class="border-0" action="{{ route('crud-buku.destroy', $data['buku']->id) }}" method="POST"
+                style="display:inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Hapus
+                    Buku</button>
             </form>
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="/js/bootstrap-select.min.js"></script>
+@endpush
+@push('scripts')
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            document.getElementById('updateForm').submit();
+        });
+    </script>
+@endpush
