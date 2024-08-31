@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class Pertemuan2Controller extends Controller
+class BukuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class Pertemuan2Controller extends Controller
         $search = $request->input('search','');
         $limit = $request->input('limit', 10); // Default limit is 10
 
-        $query = Buku::query();
-
+        $query = Buku::with('kategoris');
+        
         $query->where(function ($q) use ($search) {
             $q->where('judul', 'like', '%' . $search . '%')
               ->orWhere('penulis', 'like', '%' . $search . '%')

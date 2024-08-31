@@ -35,5 +35,32 @@
                 </ul>
             </li>
         </ul>
+        <ul class="nav nav-treeview">
+            <li class="nav-item {{ request()->is('pertemuan2/crud-kategori*') ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>
+                        CRUD KATEGORI
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('crud-kategori.index') }}"
+                            class="nav-link {{ request()->routeIs('crud-kategori.index') ? 'active' : '' }}">
+                            <i class="fas fa-list nav-icon"></i>
+                            <p>List Kategori</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('crud-kategori.create') }}"
+                            class="nav-link {{ request()->routeIs('crud-kategori.create') ? 'active' : '' }}">
+                            <i class="fas fa-plus-circle nav-icon"></i>
+                            <p>Tambah Kategori</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </li>
 @endsection
