@@ -9,5 +9,4 @@
     <ul class="nav nav-treeview">
         {{ $slot }}
     </ul>
-
 </li>
