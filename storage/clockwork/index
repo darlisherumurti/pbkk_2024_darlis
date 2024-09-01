@@ -382,3 +382,12 @@
 1725177114-7504-1312584516,1725177114.6049,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,331.76016807556,request
 1725177186-5421-1632362537,1725177186.3634,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,345.18194198608,request
 1725177203-5568-1114239650,1725177203.3967,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,389.55307006836,request
+1725177239-1794-144101879,1725177239.0059,GET,/pertemuan2/crud-buku/create,"App\Http\Controllers\BukuController@create",200,327.29601860046,request
+1725177241-7007-1959761661,1725177241.5587,GET,/pertemuan2/crud-kategori,"App\Http\Controllers\KategoriController@index",200,312.35599517822,request
+1725177244-2192-1050059940,1725177244.0193,GET,/pertemuan2/crud-kategori/create,"App\Http\Controllers\KategoriController@create",200,326.09391212463,request
+1725177245-7816-574939472,1725177245.567,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,351.96089744568,request
+1725177425-5901-340545795,1725177425.3665,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",500,1626.9550323486,request
+1725177617-4655-1863859979,1725177617.2596,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,400.36392211914,request
+1725177635-5424-821388793,1725177635.3829,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,409.31987762451,request
+1725177666-5029-1407073687,1725177666.3547,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,304.10480499268,request
+1725177760-8582-1410654395,1725177760.6729,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,352.10609436035,request
