@@ -14,6 +14,11 @@ class BukuController extends Controller
     public function index(Request $request)
     {
         $relation = 'kategoris'; 
+
+        // LAZY LOADING
+        // $data['buku'] = Buku::SearchWithRelations($request, $relation, ['nama'])->paginator($request);
+
+        // EAGER LOADING
         $data['buku'] = Buku::with($relation)
         ->searchWithRelations($request, $relation, ['nama'])->paginator($request);
 
