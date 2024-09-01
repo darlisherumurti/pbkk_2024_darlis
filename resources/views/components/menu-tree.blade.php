@@ -1,5 +1,5 @@
-<li class="nav-item has-treeview  {{ request()->is($active) ? 'menu-open' : '' }} ">
-    <a href="#" class="nav-link {{ request()->is($active) ? 'active' : '' }}">
+<li class="nav-item has-treeview  {{ $active ? 'menu-open' : '' }} ">
+    <a href="#" class="nav-link {{ $active ? 'active' : '' }}">
         <i class="nav-icon {{ $icon }}"></i>
         <p>
             {{ $title }}

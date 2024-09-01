@@ -8,7 +8,7 @@ use Closure;
 class MenuTree extends Component
 {
     public string $title;
-    public string $active;
+    public bool $active;
     public string $icon;
 
     /**

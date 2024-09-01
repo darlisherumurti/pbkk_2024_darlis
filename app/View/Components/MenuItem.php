@@ -9,16 +9,16 @@ use Illuminate\View\Component;
 class MenuItem extends Component
 {
     public string $title;
-    public string $route;
-    public string $active;
+    public string $href;
+    public bool $active;
     public string $icon;
     /**
      * Create a new component instance.
      */
-    public function __construct(string $title, $route,string $active, $icon)
+    public function __construct(string $title, $href,string $active, $icon)
     {
         $this->title = $title;
-        $this->route = $route;
+        $this->href = $href;
         $this->active = $active;
         $this->icon = $icon;
     }
