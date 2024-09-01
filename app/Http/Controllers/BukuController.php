@@ -13,7 +13,10 @@ class BukuController extends Controller
 {
     public function index(Request $request)
     {
-        $data['buku']  = Buku::with('kategoris')->filter($request);
+        $relation = 'kategoris'; 
+        $data['buku'] = Buku::with($relation)
+        ->searchWithRelations($request, $relation, ['nama'])->paginator($request);
+
         return view('pertemuan2.buku.index', compact('data'));
     }
 

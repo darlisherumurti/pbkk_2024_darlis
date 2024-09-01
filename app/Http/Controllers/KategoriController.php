@@ -10,7 +10,7 @@ class KategoriController
 {
     public function index(Request $request)
     {
-        $data['kategori'] = $query = Kategori::with('bukus')->filter($request);
+        $data['kategori'] = $query = Kategori::with('bukus')->search($request)->paginator($request);
         return view('pertemuan2.kategori.index', compact('data'));
     }
 
