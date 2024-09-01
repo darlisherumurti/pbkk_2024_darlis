@@ -9,6 +9,7 @@ CHANGELOG.md export-ignore
 /storage/*.key
 /storage
 /vendor
+/database/*.sqlite
 .env
 .env.backup
 .env.production
