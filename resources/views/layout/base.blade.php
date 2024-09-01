@@ -15,6 +15,6 @@
         <x-menu-item title="Tambah Kategori" icon="fas fa-plus-circle" :href="route('crud-kategori.create')" :active="request()->routeIs('crud-kategori.create')">
         </x-menu-item>
     </x-menu-tree>
-    <x-menu-item title="Adminlte" icon="fas fa-plus-circle" href="/adminlte/index.html" active=''>
-    </x-menu-item>
+    {{-- <x-menu-item title="Adminlte" icon="fas fa-plus-circle" href="/adminlte/index.html" active=''>
+    </x-menu-item> --}}
 @endsection

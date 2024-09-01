@@ -420,3 +420,6 @@
 1725179856-0965-1778304398,1725179855.9404,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,295.65906524658,request
 1725179862-6554-660764792,1725179862.5171,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,277.97412872314,request
 1725179869-2943-1533683191,1725179869.1177,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,333.85300636292,request
+1725179948-2816-990129332,1725179948.0893,GET,/pertemuan2/crud-kategori,"App\Http\Controllers\KategoriController@index",200,403.66387367249,request
+1725179967-7636-258018345,1725179967.4919,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,485.7611656189,request
+1725180007-4134-966334558,1725180007.2404,GET,/pertemuan2/crud-buku,"App\Http\Controllers\BukuController@index",200,337.238073349,request
