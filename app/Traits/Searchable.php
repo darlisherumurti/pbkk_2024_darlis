@@ -30,6 +30,10 @@ trait Searchable
         return $query;
     }
 
+    public function Lele(){
+        return true;
+    }
+
     public function scopeSearchWithRelations($query, Request $request, string $relation = '', array $relatedColumns = [])
     {
         $search =  (string) $request->input('search');
