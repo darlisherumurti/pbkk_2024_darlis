@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Faker\Factory as Faker;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -18,48 +17,26 @@ class UserSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $adminRole = Role::where('nama_role', 'Admin')->first();
-        $authorRole = Role::where('nama_role', 'Author')->first();
-        $userRole = Role::where('nama_role', 'User')->first();
+        $adminRole = Role::where('name', 'admin')->first();
+        $petugasRole = Role::where('name', 'petugas')->first();
+        $pengunjungRole = Role::where('name', 'pengunjung')->first();
 
         User::create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('12345678'),
-            'role_id' => $adminRole->id,
-        ]);
+        ])->assignRole($adminRole);
 
         User::create([
-            'name' => 'Author',
-            'email' => 'author@example.com',
+            'name' => 'Petugas',
+            'email' => 'petugas@example.com',
             'password' => Hash::make('12345678'),
-            'role_id' => $authorRole->id,
-        ]);
-
+        ])->assignRole($petugasRole);
 
         User::create([
-            'name' => 'User',
-            'email' => 'user@example.com',
+            'name' => 'Pengunjung',
+            'email' => 'pengunjung@example.com',
             'password' => Hash::make('12345678'),
-            'role_id' => $userRole->id,
-        ]);
-
-        foreach (range(1, 20) as $index) {
-            User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => Hash::make('12345678'),
-                'role_id' => $authorRole->id,
-            ]);
-        }
-
-        foreach (range(1, 20) as $index) {
-            User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => Hash::make('12345678'),
-                'role_id' => $userRole->id,
-            ]);
-        }
+        ])->assignRole($pengunjungRole);
     }
 }

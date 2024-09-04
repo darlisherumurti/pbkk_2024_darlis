@@ -10,123 +10,38 @@
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('login.show')" :active="request()->is('pertemuan3/login')">
                 Read Articles
             </x-menu-item>
-            @can('view article')
+            @role('writer')
                 <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
-                    View Articles
+                    Your Articles
                 </x-menu-item>
-            @endcan
-            @can('manage article')
+                @elserole('admin')
                 <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
                     Manage Articles
                 </x-menu-item>
-            @endcan
+            @endrole
         </x-menu-tree>
         <x-menu-tree title="Kategori" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/articles*')">
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('login.show')" :active="request()->is('pertemuan3/login')">
                 See Kategori
             </x-menu-item>
-            @can('manage kategori')
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
-                    Add Kategori
-                </x-menu-item>
+            @role('admin')
                 <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
                     Manage Kategori
                 </x-menu-item>
-            @endcan
+            @endrole
         </x-menu-tree>
-        @can('manage users')
+        @role('admin')
             <x-menu-tree title="Users" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/articles*')">
                 <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
-                    View Users
-                </x-menu-item>
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
-                    Add Users
+                    List Users
                 </x-menu-item>
                 <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
                     Manage Users
                 </x-menu-item>
 
             </x-menu-tree>
-        @endcan
+        @endrole
     </x-menu-tree>
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
-    @can('manage users')
-    @endcan
     @auth
         <form class="w-100 nav-item" id="logout-form" action="{{ route('login.destroy') }}" method="POST">
             @csrf
