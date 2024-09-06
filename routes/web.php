@@ -13,7 +13,8 @@ Route::prefix('/pertemuan3')->group(function(){
     Route::view('/home','pertemuan3.home')->name('home');
     
     Route::middleware(['auth'])->group(function(){
-        Route::get('/buku/{buku}/pinjam', [BukuController::class,'pinjam_show'])->name('buku.pinjam.show');
+        Route::get('/pinjam/buku/{buku}', [PinjamanController::class,'create'])->name('pinjam.create');
+        Route::get('/pinjaman/me', [PinjamanController::class,'me'])->name('pinjaman.me');
         Route::post('/pinjaman', [PinjamanController::class,'store'])->name('pinjaman.store');
 
         Route::middleware(['role:admin'])->group(function(){
@@ -45,10 +46,7 @@ Route::prefix('/pertemuan3')->group(function(){
             Route::post('/pinjaman/{pinjaman}/tolak', [PinjamanController::class,'tolak'])->name('pinjaman.tolak');
             Route::post('/pinjaman/{pinjaman}/kembalikan', [PinjamanController::class,'kembalikan'])->name('pinjaman.kembalikan');
         });
-        
-        Route::middleware(['role:pengunjung'])->group(function(){
-            Route::get('/pinjaman-saya', [PinjamanController::class,'pinjaman_saya'])->name('pinjaman.saya');
-        });
+    
     });
 
     Route::get('/register', [RegisterController::class,'show'])->name('register.create');

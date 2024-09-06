@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\PinjamanServiceFacade as PinjamanService;
+use App\Http\Requests\Pinjamanan\NewPinjamanRequest;
+use App\Models\Buku;
 use App\Models\Pinjaman;
 use Illuminate\Http\Request;
 
@@ -18,17 +21,19 @@ class PinjamanController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Buku $buku)
     {
-        //
+        $data['buku'] = $buku;
+        return view('pertemuan3.pinjaman.create', compact('data'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(NewPinjamanRequest $request)
     {
-        //
+        $pinjaman = PinjamanService::createPinjaman($request);
+        return redirect()->route('buku.index')->with('success', 'Pinjaman "' . $pinjaman->buku->judul . '" sukses ditambahkan.');
     }
 
     /**
@@ -63,9 +68,13 @@ class PinjamanController
         //
     }
 
-    public function pinjaman_saya()
+    public function me(Request $request)
     {
-        //
+        $user = $request->user();
+        $data['pinjaman'] = PinjamanService::getUserPinjamans($request, $user);
+        // $data['pinjaman']->appends($request->query());
+
+        return view('pertemuan3.pinjaman.me', compact('data'));
     }
 
     public function setujui(Pinjaman $pinjaman)

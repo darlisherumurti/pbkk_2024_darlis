@@ -14,12 +14,13 @@
         </div>
         <div class="d-flex mb-3">
             <button onclick="window.history.back()" class="btn btn-primary mr-2">Kembali</button>
-
-            <a href="{{ route('kategori.create') }}" class="text-white">
-                <button class="btn btn-success mr-2">
-                    Tambah Kategori
-                </button>
-            </a>
+            @role('admin')
+                <a href="{{ route('kategori.create') }}" class="text-white">
+                    <button class="btn btn-success mr-2">
+                        Tambah Kategori
+                    </button>
+                </a>
+            @endrole
             {{ $data['kategori']->appends(['search' => request()->get('search'), 'limit' => request()->get('limit')])->links() }}
 
         </div>

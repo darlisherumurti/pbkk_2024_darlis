@@ -47,7 +47,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function pinjaman():HasMany
+    public function pinjamans():HasMany
     {
         return $this->hasMany(Pinjaman::class);
     }

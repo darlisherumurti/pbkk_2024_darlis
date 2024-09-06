@@ -35,7 +35,7 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{{ route('kategori.index') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pinjaman.me') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>

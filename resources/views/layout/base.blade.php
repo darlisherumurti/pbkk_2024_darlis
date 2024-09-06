@@ -31,6 +31,23 @@
                 </x-menu-item>
             @endrole
         </x-menu-tree>
+        @auth
+            <x-menu-tree title="Pinjaman" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/pinjaman*')">
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.me')" :active="request()->is('pertemuan3/pinjaman')">
+                    Pinjaman saya
+                </x-menu-item>
+                @role('admin|petugas')
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.index')" :active="request()->is('pertemuan3/pinjaman/list')">
+                        Lihat Pinjaman
+                    </x-menu-item>
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.index')" :active="request()->is('pertemuan3/pinjaman/list')">
+                        Manage Pinjaman
+                    </x-menu-item>
+                @endrole
+            </x-menu-tree>
+            @role('admin|petugas')
+            @endrole
+        @endauth
         @role('admin')
             <x-menu-tree title="Users" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/articles*')">
                 <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">

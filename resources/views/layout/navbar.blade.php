@@ -121,6 +121,14 @@
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                        name="email" value="admin@example.com" hidden>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                        id="password" name="password" value="12345678" hidden>
+                    <button type="submit" class="btn btn-link dropdown-item">Admin</button>
+                </form>
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                         name="email" value="petugas@example.com" hidden>
                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                         id="password" name="password" value="12345678" hidden>
@@ -136,14 +144,7 @@
                     <button type="submit" class="btn btn-link dropdown-item">Pengunjung</button>
 
                 </form>
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                        name="email" value="admin@example.com" hidden>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                        id="password" name="password" value="12345678" hidden>
-                    <button type="submit" class="btn btn-link dropdown-item">Admin</button>
-                </form>
+
             </div>
         </li>
         @auth
@@ -163,30 +164,3 @@
         </li>
     </ul>
 </nav>
-
-{{-- <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                        name="email" value="petugas@example.com" hidden>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                        name="password" value="12345678" hidden>
-                    <button type="submit" class="btn btn-link dropdown-item">Petugas</button>
-
-                </form>
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                        name="email" value="pengunjung@example.com" hidden>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                        name="password" value="12345678" hidden>
-                    <button type="submit" class="btn btn-link dropdown-item">Pengunjung</button>
-
-                </form>
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                        name="email" value="admin@example.com" hidden>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                        name="password" value="12345678" hidden>
-                    <button type="submit" class="btn btn-link dropdown-item">Admin</button>
-                </form> --}}

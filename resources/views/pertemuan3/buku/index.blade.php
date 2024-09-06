@@ -66,7 +66,7 @@
                 @foreach ($data['buku'] as $buku)
                     <div class="col">
                         <div class="card overflow-auto position-relative">
-                            <img src="{{ $buku->image_url }}" class="card-img-top" alt="{{ $buku->judul }}">
+                            <img loading="lazy" src="{{ $buku->image_url }}" class="card-img-top" alt="{{ $buku->judul }}">
                             <div class="card-body">
                                 <h5 class="card-title"><b>{{ $buku->judul }}</b></h5><br>
                             </div>
@@ -75,7 +75,7 @@
                                     <a href="{{ route('buku.show', $buku->id) }}">
                                         <button class="btn btn-primary">Lihat</button>
                                     </a>
-                                    <a href="{{ route('buku.pinjam.show', $buku->id) }}">
+                                    <a href="{{ route('pinjam.create', $buku->id) }}">
                                         <button class="btn btn-secondary">Pinjam</button>
                                     </a>
                                 </div>

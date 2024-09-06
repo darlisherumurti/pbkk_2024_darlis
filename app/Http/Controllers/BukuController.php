@@ -79,12 +79,6 @@ class BukuController
         $buku->delete();
         return redirect()->route('buku.list')->with('success', 'Buku "' . $buku->judul . '" sukses dihapus".');
     }
-
-    public function pinjam_show(Buku $buku)
-    {
-        $data['buku'] = $buku;
-        return view('pertemuan3.buku.pinjam', compact('data'));
-    }
     
     public function list(Request $request)
     {

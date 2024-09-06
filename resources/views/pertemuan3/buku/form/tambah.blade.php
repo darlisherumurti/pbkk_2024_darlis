@@ -145,7 +145,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Tambah Buku</button>
-    <a href="{{ route('buku.list') }}" class="btn btn-warning">Kembali</a><a href="#"></a>
+    <button class="btn btn-warning" onclick="window.history.back()">Kembali</button>
+    {{-- <a href="{{ route('buku.list') }}" class="btn btn-warning">Kembali</a><a href="#"></a> --}}
     <button type="reset" class="btn btn-danger">Reset</button>
     <button type="button" class="btn btn-secondary" onclick="randomizeForm()">Randomize</button>
 </form>
@@ -272,7 +273,7 @@
                                     previewImage();
                                     form.find('input:first').focus();
                                 } else if (result.isDismissed) {
-                                    window.location.href = '/pertemuan3/buku/list';
+                                    window.history.back();
                                 }
                             });
                         },

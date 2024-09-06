@@ -1,50 +1,46 @@
-<table id="bukuTable" class="table table-bordered table-striped">
+<table id="peminjamanTable" class="table table-bordered table-striped">
     <tr>
-        {{-- <th>No</th> --}}
         <th>ID</th>
-        <th>Judul</th>
-        <th>Penulis</th>
-        <th>Penerbit</th>
-        <th>Tahun Terbit</th>
-        <th>ISBN</th>
-        <th>Kategori</th>
-        @role('admin')
-            <th>Aksi</th>
-        @endrole
+        <th>Buku</th>
+        <th>Status</th>
+        <th>Tanggal Peminjaman</th>
+        <th>Tanggal Pengembalian</th>
+        <th>Durasi Peminjaman</th>
+        <th>Tgl. Dikembalikan</th>
+        <th>
+            Aksi
+        </th>
     </tr>
-    @foreach ($buku as $b)
+    @foreach ($pinjaman as $p)
         <tr>
-            {{-- <td>{{ $loop->iteration }}</td> --}}
-            <td>{{ $b->id }}</td>
+            <td>{{ $p->id }}</td>
             <td>
-                <a href="{{ route('buku.detail', $b->id) }}">{{ $b->judul }}</a>
+                <a href="{{ route('buku.show', $p->buku->id) }}">{{ $p->buku->judul }}</a>
             </td>
-            <td>{{ $b->penulis }}</td>
-            <td>{{ $b->penerbit }}</td>
-            <td>{{ $b->tahun_terbit }}</td>
-            <td>{{ $b->isbn }}</td>
             <td>
-                @foreach ($b->kategoris as $k)
-                    <span class="badge bg-primary">{{ $k->nama }}</span>
-                @endforeach
+                @include('pertemuan3.pinjaman.table.status', ['status' => $p->status])
             </td>
-            @role('admin')
-                <td>
-                    <div class="d-flex">
-
-                        <a href="{{ route('buku.edit', $b->id) }}">
-                            <button class="btn btn-sm mr-2 btn-primary">Edit</button>
+            <td>{{ $p->tanggal_peminjaman }}</td>
+            <td>{{ $p->tanggal_pengembalian }}</td>
+            <td>{{ $p->durasi_peminjaman }} Hari</td>
+            <td>{{ $p->tanggal_dikembalikan ?? '-' }}</td>
+            <td>
+                <div class="d-flex">
+                    <a href="{{ route('pinjaman.show', $p->id) }}" class="btn btn-sm mr-2 btn-primary">Detail</a>
+                    @role('admin')
+                        <a href="{{ route('buku.edit', $p->id) }}">
+                            <button class="btn btn-sm mr-2 btn-warning">Edit</button>
 
                         </a>
                         @include('pertemuan3.buku.form.hapus', [
-                            'buku' => $b,
+                            'buku' => $p,
                             'class' => 'btn-sm',
                             'text' => 'Hapus',
                         ])
+                    @endrole
+                </div>
+            </td>
 
-                    </div>
-                </td>
-            @endrole
         </tr>
     @endforeach
 </table>
@@ -68,7 +64,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#bukuTable').DataTable({
+            $('#peminjamanTable').DataTable({
                 responsive: true
                 paging: true,
                 searching: true,
