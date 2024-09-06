@@ -4,7 +4,7 @@
     @elseif($status == 'Disetujui')
         <span class="badge badge-success">{{ $status }}</span>
     @elseif($status == 'Ditolak')
-        <span class="badge badge-warning">{{ $status }}</span>
+        <span class="badge badge-danger">{{ $status }}</span>
     @endif
 </h5>
 

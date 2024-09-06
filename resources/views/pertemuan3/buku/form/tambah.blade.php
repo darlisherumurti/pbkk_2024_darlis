@@ -39,7 +39,7 @@
             <label>Image Preview</label>
             <div id="imagePreviewContainer" class="border p-2" style="min-height: 200px;">
                 <a id="imagePreviewLightBox" href="" data-lightbox="book-image" data-title="preview">
-                    <img id="imagePreview" src="#" alt="No image" class="img-fluid"
+                    <img loading="lazy" id="imagePreview" src="#" alt="No image" class="img-fluid"
                         style="display: none; max-height: 180px;">
                 </a>
             </div>

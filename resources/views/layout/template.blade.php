@@ -97,6 +97,8 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Bootstrap 4 -->
     <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->

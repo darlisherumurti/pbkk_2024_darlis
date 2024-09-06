@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\RegisterRequest;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,17 +10,9 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController
 {
-    public function handler($request){
-        return match ($request->method()) {
-            'GET' => $this->show($request),
-            'POST' => $this->register( $request),
-            default => abort(405, 'Method Not Allowed'),
-        };
-    }
-
     public function show(Request $request){
         if (Auth::check()) {
-            return redirect('/');
+            return redirect()->back();
         }else{
             return view('pertemuan3.auth.register');
         }
@@ -38,17 +28,12 @@ class RegisterController
 
     protected function create(array $data)
     {
-        $roleId = Role::where('nama_role', 'User')->first()->id;
-        if(!$roleId){
-            throw new \RuntimeException('Role user not found');
-        }
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $user->role_id = $roleId;
-        $user->save();
+        $user->assignRole('pengunjung');
         return $user;
     }
 

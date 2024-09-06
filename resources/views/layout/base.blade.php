@@ -33,7 +33,7 @@
         </x-menu-tree>
         @auth
             <x-menu-tree title="Pinjaman" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/pinjaman*')">
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.me')" :active="request()->is('pertemuan3/pinjaman')">
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.me')" :active="request()->is('pertemuan3/pinjaman/me')">
                     Pinjaman saya
                 </x-menu-item>
                 @role('admin|petugas')

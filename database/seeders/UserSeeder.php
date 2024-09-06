@@ -15,8 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
-
         $adminRole = Role::where('name', 'admin')->first();
         $petugasRole = Role::where('name', 'petugas')->first();
         $pengunjungRole = Role::where('name', 'pengunjung')->first();

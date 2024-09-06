@@ -15,10 +15,19 @@ class PinjamanService
     public function getPinjamans(Request $request,){
 
         $search = $request->input('search') ?? '';
+        $status_persetuan = $request->input('status_persetujuan') ?? '';
+        $status_pengembalian = $request->input('status_pengembalian') ?? '';
 
         $query = Pinjaman::query()
-        ->search($search);
-
+        ->withRelation('user')
+        ->search($search)
+        ->searchWithRelation($search, 'user', ['name']);
+        if($status_persetuan) {
+            $query->filter($status_persetuan, 'status_persetujuan');
+        }
+        if($status_pengembalian) {
+            $query->filter($status_pengembalian, 'status_pengembalian');
+        }
         return $query->paginator($request,30);
     }
 

@@ -4,7 +4,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            @include('pertemuan3.pinjaman.table.me-list', ['pinjaman' => $data['pinjaman']])
+            @include('pertemuan3.pinjaman.table.list', ['pinjaman' => $data['pinjaman']])
         </div>
     </div>
 @endsection

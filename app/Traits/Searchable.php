@@ -37,6 +37,8 @@ trait Searchable
     {
         if($this->relationExists($relation)) {
             return $query->with($relation);
+        } else {
+            return $query;
         }
     }
 
@@ -45,16 +47,42 @@ trait Searchable
         if($this->relationExists($relation)) {
             return $query->whereHas($relation, function ($q) use ($search, $relatedColumns) {
                 foreach ($relatedColumns as $relatedColumn) {
-                    $q->where("{$relatedColumn}", 'like', '%' . $search . '%');
+                    $q->orWhere("{$relatedColumn}", 'like', '%' . $search . '%');
                 }
             });
+        } else {
+            return $query;
         }
     }
 
+    protected function scopeSearchWithRelation(Builder $query, string $search, string $relation, array $relatedColumns): Builder
+    {
+        $columns = Schema::getColumnListing($this->getTable());
+
+        if($this->relationExists($relation)) {   
+            $query->WhereHas($relation, function ($q) use ($search, $relatedColumns) {
+                foreach ($relatedColumns as $relatedColumn) {
+                    $q->orWhere("{$relatedColumn}", 'like', '%' . $search . '%');
+                }
+            });
+            $query->orWhere(function ($q) use ($search, $columns) {
+                foreach ($columns as $column) {
+                    $q->orWhere($column, 'like', "%{$search}%");
+                }
+            });
+            dd($query->toSql(), $query->getBindings(), $query->get());
+
+            return $query;
+        } else {
+            return $query;
+        }
+    }
     protected function scopeFilter(Builder $query, string $search, string $column = 'id'): Builder 
     {
         if(Schema::hasColumn($this->getTable(), $column)) {
             return $query->where($column, 'like', '%' . $search . '%');
+        } else {
+            throw new \Exception('Column ' . $column . ' does not exist in table ' . $this->getTable());
         }
     }
 

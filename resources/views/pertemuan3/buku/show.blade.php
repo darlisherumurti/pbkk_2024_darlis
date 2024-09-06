@@ -24,7 +24,8 @@
                 <div class="col-4">
                     <a href="{{ $data['buku']->image_url }}" data-lightbox="book-image"
                         data-title="{{ $data['buku']->judul }}">
-                        <img id="imagePreview" src="{{ $data['buku']->image_url }}" alt="Image Preview" class="img-fluid">
+                        <img loading="lazy" id="imagePreview" src="{{ $data['buku']->image_url }}" alt="Image Preview"
+                            class="img-fluid">
                     </a>
                 </div>
                 <div class="col-8">

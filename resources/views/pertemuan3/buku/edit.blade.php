@@ -50,8 +50,8 @@
                         <div id="imagePreviewContainer" class="border p-2" style="min-height: 200px;">
                             <a href="{{ $data['buku']->image_url }}" data-lightbox="book-image"
                                 data-title="{{ $data['buku']->judul }}">
-                                <img id="imagePreview" src="{{ old('image_url', $data['buku']->image_url) }}" alt="No image"
-                                    class="img-fluid" style="max-height: 180px;">
+                                <img loading="lazy" id="imagePreview" src="{{ old('image_url', $data['buku']->image_url) }}"
+                                    alt="No image" class="img-fluid" style="max-height: 180px;">
                             </a>
                         </div>
                     </div>
