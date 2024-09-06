@@ -47,4 +47,14 @@ class User extends Authenticatable
         ];
     }
 
+    public function pinjaman():HasMany
+    {
+        return $this->hasMany(Pinjaman::class);
+    }
+
+    public function pinjamanBelumDikembalikan()
+    {
+        return $this->pinjaman()->where('status','Disetujui')->whereNull('tanggal_pengembalian')->get();
+    }
+
 }

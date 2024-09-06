@@ -11,7 +11,14 @@ class Kategori extends Model
     use HasFactory;
     use Searchable;
     
-    public function articles(){
-        return $this->belongsToMany(Article::class,'article_kategori');
+    protected $table = 'kategori';
+
+    protected $fillable = [
+        'nama',
+    ];
+    
+    public function bukus()
+    {
+        return $this->belongsToMany(Buku::class, 'buku_kategori', 'kategori_id', 'buku_id'); // Explicitly define the pivot table name
     }
 }

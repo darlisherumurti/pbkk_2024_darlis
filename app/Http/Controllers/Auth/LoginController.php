@@ -23,7 +23,7 @@ class LoginController
  
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect()->back();
         }
  
         return back()->withErrors([

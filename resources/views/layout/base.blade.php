@@ -3,29 +3,30 @@
 @section('sidebar')
     <x-menu-tree title="Pertemuan 3" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/*')">
         @guest
-            <x-menu-item icon="fas fa-sign-in-alt" :href="route('login.show')" :active="request()->is('pertemuan3/login')">Login</x-menu-item>
+            <x-menu-item icon="fas fa-sign-in-alt" :href="route('login')" :active="request()->is('pertemuan3/login')">Login</x-menu-item>
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">Register</x-menu-item>
         @endguest
-        <x-menu-tree title="Article" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/articles*')">
-            <x-menu-item icon="fas fa-sign-in-alt" :href="route('login.show')" :active="request()->is('pertemuan3/login')">
-                Read Articles
+        <x-menu-tree title="Buku" icon="fas fa-book" :active="request()->is('pertemuan3/buku*')">
+            <x-menu-item icon="fas fa-sign-in-alt" :href="route('buku.index')" :active="request()->is('pertemuan3/buku')">
+                Explore Buku
             </x-menu-item>
-            @role('writer')
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
-                    Your Articles
+            @role('admin')
+                <x-menu-item icon="fas fa-plus" :href="route('buku.create')" :active="request()->is('pertemuan3/buku/create')">
+                    Tambah Buku
                 </x-menu-item>
-                @elserole('admin')
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
-                    Manage Articles
+            @endrole
+            @role('petugas|admin')
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('buku.list')" :active="request()->is('pertemuan3/buku/list')">
+                    Manage Buku
                 </x-menu-item>
             @endrole
         </x-menu-tree>
-        <x-menu-tree title="Kategori" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/articles*')">
-            <x-menu-item icon="fas fa-sign-in-alt" :href="route('login.show')" :active="request()->is('pertemuan3/login')">
+        <x-menu-tree title="Kategori" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan3/kategori*')">
+            <x-menu-item icon="fas fa-sign-in-alt" :href="route('kategori.index')" :active="request()->is('pertemuan3/kategori')">
                 See Kategori
             </x-menu-item>
-            @role('admin')
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">
+            @role('admin|petugas')
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('kategori.list')" :active="request()->is('pertemuan3/kategori/list')">
                     Manage Kategori
                 </x-menu-item>
             @endrole
@@ -42,10 +43,4 @@
             </x-menu-tree>
         @endrole
     </x-menu-tree>
-    @auth
-        <form class="w-100 nav-item" id="logout-form" action="{{ route('login.destroy') }}" method="POST">
-            @csrf
-            <button type="submit" id="logout" class="btn btn-primary w-100">Logout</button>
-        </form>
-    @endauth
 @endsection

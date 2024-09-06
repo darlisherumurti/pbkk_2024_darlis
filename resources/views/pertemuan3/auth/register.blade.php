@@ -20,7 +20,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="/adminlte/index2.html"><b>PBKK</b>(B)</a>
+            <a href="#"><b>PBKK</b>(B)</a>
         </div>
 
         <div class="card">
@@ -64,7 +64,7 @@
                     </div>
                     <div class="row">
                         <div class="col-8">
-                            <a href="{{ route('login.show') }}" class="text-center">Already registered? Sign in</a>
+                            <a href="{{ route('login') }}" class="text-center">Already registered? Sign in</a>
                         </div>
                         <div class="col-4 ml-auto">
                             <button type="submit" class="btn btn-primary btn-block">Register</button>

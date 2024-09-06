@@ -6,72 +6,75 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Trait Searchable
+ * Provides searching and filtering functionalities.
+ */
 trait Searchable
 {
-    /**
-     * Scope a query to search and paginate.
-     *
-     * @param Builder $query
-     * @param string $search
-     * @param int $limit
-     * @return Builder
-     */
-    public function scopeSearch($query, Request $request)
+    protected function scopePaginator(Builder $query, Request $request, $limit = 10)
     {
-        $search = $request->input('search');
-        if ($search) {
-            $columns = Schema::getColumnListing($this->getTable());
-            $query->where(function ($q) use ($search, $columns) {
-                foreach ($columns as $column) {
-                    $q->orWhere($column, 'like', "%{$search}%");
-                }
-            });
-        }
-        return $query;
-    }
-
-    public function Lele(){
-        return true;
-    }
-
-    public function scopeSearchWithRelations($query, Request $request, string $relation = '', array $relatedColumns = [])
-    {
-        $search =  (string) $request->input('search');
-
-        if ($search) {
-            $table = $this->getTable();
-            $columns = Schema::getColumnListing($this->getTable());
-            $query->where(function ($q) use ($search, $table, $columns, $relation, $relatedColumns) {
-
-                if ($relation && $this->relationExists($relation)) {
-                    $q->whereHas($relation, function ($que) use ($search, $relatedColumns) {
-                        foreach ($relatedColumns as $relatedColumn) {
-                            $que->where("{$relatedColumn}", 'like', '%' . $search . '%');
-                        }
-                    });
-                }
-                foreach ($columns as $column) {
-                    $q->orWhere("{$table}.{$column}", 'like', '%' . $search . '%');
-                }
-            });
-        }
-        return $query;
-    }
-
-    public function scopePaginator($query, Request $request)
-    {
-        $limit = $request->input('limit', 10);
+        $limit = $request->input('limit', $limit);
         return $query->paginate($limit);
     }
 
-    /**
-     * Check if the relation exists on the model.
-     *
-     * @param string $relation
-     * @return bool
-     */
     protected function relationExists(string $relation): bool
     {
         return method_exists($this, $relation);
     }
+
+    protected function scopeSearch(Builder $query, string $search): Builder
+    {
+        $columns = Schema::getColumnListing($this->getTable());
+        return $query->where(function ($q) use ($search, $columns) {
+            foreach ($columns as $column) {
+                $q->orWhere($column, 'like', "%{$search}%");
+            }
+        });
+    }
+
+    protected function scopeWithRelation(Builder $query, string $relation): Builder
+    {
+        if($this->relationExists($relation)) {
+            return $query->with($relation);
+        }
+    }
+
+    protected function scopeSearchRelation(Builder $query, string $search, string $relation ,array $relatedColumns): Builder
+    {
+        if($this->relationExists($relation)) {
+            return $query->whereHas($relation, function ($q) use ($search, $relatedColumns) {
+                foreach ($relatedColumns as $relatedColumn) {
+                    $q->where("{$relatedColumn}", 'like', '%' . $search . '%');
+                }
+            });
+        }
+    }
+
+    protected function scopeFilter(Builder $query, string $search, string $column = 'id'): Builder 
+    {
+        if(Schema::hasColumn($this->getTable(), $column)) {
+            return $query->where($column, 'like', '%' . $search . '%');
+        }
+    }
+
+    protected function scopeFilters(Builder $query, string $search,array $columns = ['id']): Builder
+    {
+        foreach ($columns as $column) {
+            $query = $this->scopeFilter($query, $search, $column);
+        }
+        return $query;
+    }
+
+    protected function scopeFilterByRelation(Builder $query, string $search, string $relation = '', $column = 'id') : Builder
+    {
+        if ($relation && $this->relationExists($relation)) {
+            return $query->whereHas($relation, function ($q) use ($search, $column) {
+                $q->where($column, 'like', '%' . $search . '%');
+            });
+        }
+    }
+
+
+
 }
