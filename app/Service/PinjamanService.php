@@ -19,10 +19,6 @@ class PinjamanService
         $query = Pinjaman::query()
         ->search($search);
 
-        if($request->has('user')) {
-            $query->filterByRelation($query, $request->input('user'), 'users','user_id');
-        }
-
         return $query->paginator($request,30);
     }
 

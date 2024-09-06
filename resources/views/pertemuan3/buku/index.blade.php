@@ -18,7 +18,7 @@
                     <div class="w-100 ">
                         <form action="{{ route('buku.index') }}" class="w-100" method="GET" class="form-inline mb-4">
                             <div class="row gap-2 ">
-                                <div class="col col-12 col-md-8 ">
+                                <div class="col col-12 col-md-6 ">
                                     <div class="input-group  flex-grow-1">
                                         <input type="text" name="search" class="form-control" id="search"
                                             placeholder="id, judul, penulis, penerbit, isbn, kategori, deskripsi etc."
@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col mt-2 mt-md-0 col-4 col-md-2">
+                                <div class="col mt-2 mt-md-0 col-md-2">
                                     <div class="form-group ">
                                         <select name="kategori" id="kategori" class="form-control">
                                             <option value="">-- Semua Kategori --</option>
@@ -41,7 +41,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col mt-2 mt-md-0 col-4 col-md-2">
+                                <div class="col mt-2 mt-md-0 col-md-2">
                                     <div class="form-group">
                                         <select name="limit" id="limit" class="form-control">
                                             <option value="10" @if (request()->get('limit') == 10) selected @endif>10
@@ -54,6 +54,9 @@
                                             </option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col mt-2 mt-md-0 col-md-2">
+                                    {{ $data['buku']->links() }}
                                 </div>
                             </div>
                         </form>
@@ -85,6 +88,8 @@
                 @endforeach
             </div>
         </div>
-
+        <div class="card-footer">
+            {{ $data['buku']->links() }}
+        </div>
     </div>
 @endsection

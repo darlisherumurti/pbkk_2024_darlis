@@ -13,9 +13,6 @@ Route::prefix('/pertemuan3')->group(function(){
     Route::view('/home','pertemuan3.home')->name('home');
     
     Route::middleware(['auth'])->group(function(){
-        Route::get('/pinjam/buku/{buku}', [PinjamanController::class,'create'])->name('pinjam.create');
-        Route::get('/pinjaman/me', [PinjamanController::class,'me'])->name('pinjaman.me');
-        Route::post('/pinjaman', [PinjamanController::class,'store'])->name('pinjaman.store');
 
         Route::middleware(['role:admin'])->group(function(){
 
@@ -37,11 +34,11 @@ Route::prefix('/pertemuan3')->group(function(){
             Route::get('/buku/{buku}/detail', [BukuController::class,'detail'])->name('buku.detail');
             Route::get('/kategori/{kategori}/detail', [KategoriController::class,'detail'])->name('kategori.detail');
             Route::get('/kategori/list', [KategoriController::class,'list'])->name('kategori.list');
-            Route::get('/pinjaman', [PinjamanController::class,'index'])->name('pinjaman.index');
-            Route::get('/pinjaman/{pinjaman}', [PinjamanController::class,'show'])->name('pinjaman.show');
+            Route::get('/pinjaman/list', [PinjamanController::class,'index'])->name('pinjaman.list');
             Route::get('/pinjaman/create', [PinjamanController::class,'create'])->name('pinjaman.create');
             Route::get('/pinjaman/buku', [PinjamanController::class,'buku_index'])->name('pinjaman.buku.index');
-            Route::get('/pinjaman/buku/{buku}', [PinjamanController::class,'buku_show'])->name('pinjaman.buku.show');  
+            Route::get('/pinjaman/buku/{buku}', [PinjamanController::class,'buku_show'])->name('pinjaman.buku.show'); 
+            Route::get('/pinjaman/{pinjaman}/detail', [PinjamanController::class,'detail'])->name('pinjaman.detail'); 
             Route::post('/pinjaman/{pinjaman}/setujui', [PinjamanController::class,'setujui'])->name('pinjaman.setujui');
             Route::post('/pinjaman/{pinjaman}/tolak', [PinjamanController::class,'tolak'])->name('pinjaman.tolak');
             Route::post('/pinjaman/{pinjaman}/kembalikan', [PinjamanController::class,'kembalikan'])->name('pinjaman.kembalikan');
@@ -59,6 +56,12 @@ Route::prefix('/pertemuan3')->group(function(){
     Route::get('/buku/{buku}', [BukuController::class,'show'])->name('buku.show');
     Route::get('/kategori', [KategoriController::class,'index'])->name('kategori.index');
     Route::get('/kategori/{kategori}', [KategoriController::class,'show'])->name('kategori.show');
+
+    Route::get('/pinjam/buku/{buku}', [PinjamanController::class,'create'])->name('pinjam.create');
+    Route::get('/pinjaman/me', [PinjamanController::class,'me'])->name('pinjaman.me');
+    Route::post('/pinjaman', [PinjamanController::class,'store'])->name('pinjaman.store');
+    Route::get('/pinjaman', fn() => redirect()->route('pinjaman.me'));
+    Route::get('/pinjaman/{pinjaman}', [PinjamanController::class,'show'])->name('pinjaman.show');
 });
 
 // Route::fallback(fn() => redirect('/pertemuan3/home')->with('error', 'Halaman Tidak Ditemukan'));

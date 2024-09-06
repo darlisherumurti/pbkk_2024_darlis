@@ -33,6 +33,7 @@
                     <p class="card-text">Penulis : {{ $data['buku']->penulis }}</p>
                     <p class="card-text">Penerbit : {{ $data['buku']->penerbit }}</p>
                     <p class="card-text">Tahun Terbit : {{ $data['buku']->tahun_terbit }}</p>
+                    <p class="card-text">Jumlah Halaman : {{ $data['buku']->jumlah_halaman }}</p>
                     <div>Kategori :
                         @foreach ($data['buku']->kategoris as $kategoris)
                             <span class="badge bg-primary">{{ $kategoris->nama }}</span>

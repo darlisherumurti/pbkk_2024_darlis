@@ -2,10 +2,10 @@
     <tr>
         <th>ID</th>
         <th>Buku</th>
+        <th>Username</th>
+        <th>Alamat</th>
         <th>Status Persetujuan</th>
-        <th>Status Pengembalian</th>
         <th>Tanggal Peminjaman</th>
-        <th>Tanggal Pengembalian</th>
         <th>Durasi Peminjaman</th>
         <th>Tgl. Dikembalikan</th>
         <th>
@@ -16,35 +16,30 @@
         <tr>
             <td>{{ $p->id }}</td>
             <td>
-                <a href="{{ route('buku.show', $p->buku->id) }}">{{ $p->buku->judul }}</a>
+                <a href="{{ route('buku.show', $p->buku->id) }}">{{ Str::limit($p->buku->judul, 18, '...') }}</a>
             </td>
+            <td>{{ Str::limit($p->user->name, 16, '...') }}</td>
+            <td>{{ $p->alamat }}</td>
             <td>
-                @include('pertemuan3.pinjaman.table.status_persetujuan', [
+                @include('pertemuan3.pinjaman.table.persetujuan', [
                     'status' => $p->status_persetujuan,
                 ])
             </td>
-            <td>
-                @include('pertemuan3.pinjaman.table.status_persetujuan', [
-                    'status' => $p->status_pengembalian,
-                ])
-            </td>
             <td>{{ $p->tanggal_peminjaman }}</td>
-            <td>{{ $p->tanggal_pengembalian }}</td>
             <td>{{ $p->durasi_peminjaman }} Hari</td>
             <td>{{ $p->tanggal_dikembalikan ?? '-' }}</td>
             <td>
                 <div class="d-flex">
-                    <a href="{{ route('pinjaman.show', $p->id) }}" class="btn btn-sm mr-2 btn-primary">Detail</a>
+                    <a href="{{ route('pinjaman.detail', $p->id) }}" class="btn btn-sm mr-2 btn-primary">Detail</a>
                     @role('admin')
-                        <a href="{{ route('buku.edit', $p->id) }}">
-                            <button class="btn btn-sm mr-2 btn-warning">Edit</button>
-
-                        </a>
-                        @include('pertemuan3.buku.form.hapus', [
-                            'buku' => $p,
-                            'class' => 'btn-sm',
-                            'text' => 'Hapus',
-                        ])
+                        @if ($p->status_persetujuan == 'Menunggu Persetujuan')
+                            <a href="{{ route('pinjaman.setujui', $p->id) }}">
+                                <button class="btn btn-sm mr-2 btn-success">Setujui</button>
+                            </a>
+                            <a href="{{ route('pinjaman.tolak', $p->id) }}">
+                                <button class="btn btn-sm mr-2 btn-danger">Tolak</button>
+                            </a>
+                        @endif
                     @endrole
                 </div>
             </td>

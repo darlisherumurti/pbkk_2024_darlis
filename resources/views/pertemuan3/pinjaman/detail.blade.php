@@ -8,10 +8,16 @@
         <div class="card-header">
             <div class="d-flex">
                 <button type="button" class="btn btn-primary mr-2" onclick="window.history.back()">Kembali</button>
-                @role('admin|petugas')
-                    <a href="{{ route('pinjaman.detail', $data['pinjaman']->id) }}" class="btn btn-warning mr-2">Lebih Lengkap</a>
-                @endrole
-
+                @if ($data['pinjaman']->status_persetujuan == 'Menunggu Persetujuan')
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                            -- Butuh Tindakan --</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Setujui</a>
+                            <a class="dropdown-item" href="#">Tolak</a>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="card-body">
@@ -21,6 +27,22 @@
                     <td>{{ $data['pinjaman']->id }}</td>
                 </tr>
                 <tr>
+                    <th>Username</th>
+                    <td>{{ $data['pinjaman']->user->name }}</td>
+                </tr>
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <td>{{ $data['pinjaman']->nama_lengkap }}</td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>{{ $data['pinjaman']->alamat }}</td>
+                </tr>
+                <tr>
+                    <th>Keterangan</th>
+                    <td>{{ $data['pinjaman']->keterangan }}</td>
+                </tr>
+                <tr>
                     <th>Buku</th>
                     <td> <a href="{{ route('buku.detail', $data['pinjaman']->buku->id) }}">
                             {{ $data['pinjaman']->buku->judul }}
@@ -28,7 +50,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>status_persetujuan</th>
+                    <th>Status Persetujuan</th>
                     <td>
                         @include('pertemuan3.pinjaman.table.persetujuan', [
                             'status' => $data['pinjaman']->status_persetujuan,

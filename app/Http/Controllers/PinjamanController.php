@@ -7,15 +7,18 @@ use App\Http\Requests\Pinjamanan\NewPinjamanRequest;
 use App\Models\Buku;
 use App\Models\Pinjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PinjamanController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data['pinjaman'] = PinjamanService::getPinjamans($request);
+        $data['pinjaman']->appends($request->query());
+        return view('pertemuan3.pinjaman.list', compact('data'));
     }
 
     /**
@@ -41,7 +44,12 @@ class PinjamanController
      */
     public function show(Pinjaman $pinjaman)
     {
-        //
+        if(Gate::allows('view-pinjaman', $pinjaman)) {   
+            $data['pinjaman'] = $pinjaman;
+            return view('pertemuan3.pinjaman.show', compact('data'));
+        } else {
+            abort(403);
+        }
     }
 
     /**
@@ -91,12 +99,15 @@ class PinjamanController
     {
         //
     }
-    public function buku_index()
+
+    public function detail(Pinjaman $pinjaman)
     {
-        //
+        $data['pinjaman'] = $pinjaman;
+        return view('pertemuan3.pinjaman.detail', compact('data'));
     }
-    public function buku_show(Pinjaman $pinjaman)
-    {
-        //
+
+    public function list(Request $request){
+        $data['pinjaman'] = PinjamanService::getPinjamans($request);
+        return view('pertemuan3.pinjaman.list', compact('data'));
     }
 }

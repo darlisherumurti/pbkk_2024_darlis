@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('buku_id')->constrained('buku')->onDelete('cascade');
-            $table->enum('status', ['Menunggu Persetujuan', 'Disetujui', 'Ditolak', 'Dikembalikan'])->default('Menunggu Persetujuan');
+            $table->enum('status_persetujuan', ['Menunggu Persetujuan', 'Disetujui', 'Ditolak'])->default('Menunggu Persetujuan');
+            $table->enum('status_pengembalian', ['Belum dikembalikan', 'Sudah dikembalikan'])->nullable();
             $table->string('nama_lengkap');
             $table->string('alamat');
             $table->string('keterangan');  

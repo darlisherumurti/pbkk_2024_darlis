@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function pinjamanBelumDikembalikan()
     {
-        return $this->pinjaman()->where('status','Disetujui')->whereNull('tanggal_pengembalian')->get();
+        return $this->pinjaman()->where('status_persetujuan','Disetujui')->whereNull('tanggal_pengembalian')->get();
     }
 
 }

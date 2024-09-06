@@ -37,10 +37,7 @@
                     Pinjaman saya
                 </x-menu-item>
                 @role('admin|petugas')
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.index')" :active="request()->is('pertemuan3/pinjaman/list')">
-                        Lihat Pinjaman
-                    </x-menu-item>
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.index')" :active="request()->is('pertemuan3/pinjaman/list')">
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.list')" :active="request()->is('pertemuan3/pinjaman/list')">
                         Manage Pinjaman
                     </x-menu-item>
                 @endrole

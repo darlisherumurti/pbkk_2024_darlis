@@ -1637,13 +1637,13 @@ namespace Illuminate\Support\Facades {
          * Terminate the application.
          *
          * @param \Symfony\Component\Console\Input\InputInterface $input
-         * @param int $status
+         * @param int $status_persetujuan
          * @return void 
          * @static 
-         */        public static function terminate($input, $status)
+         */        public static function terminate($input, $status_persetujuan)
         {
                         /** @var \Illuminate\Foundation\Console\Kernel $instance */
-                        $instance->terminate($input, $status);
+                        $instance->terminate($input, $status_persetujuan);
         }
                     /**
          * Register a callback to be invoked when the command lifecycle duration exceeds a given amount of time.
@@ -7744,20 +7744,20 @@ namespace Illuminate\Support\Facades {
                         return $instance->setContainer($container);
         }
                     /**
-         * Deny with a HTTP status code.
+         * Deny with a HTTP status_persetujuan code.
          *
-         * @param int $status
+         * @param int $status_persetujuan
          * @param string|null $message
          * @param int|null $code
          * @return \Illuminate\Auth\Access\Response 
          * @static 
-         */        public static function denyWithStatus($status, $message = null, $code = null)
+         */        public static function denyWithStatus($status_persetujuan, $message = null, $code = null)
         {
                         /** @var \Illuminate\Auth\Access\Gate $instance */
-                        return $instance->denyWithStatus($status, $message, $code);
+                        return $instance->denyWithStatus($status_persetujuan, $message, $code);
         }
                     /**
-         * Deny with a 404 HTTP status code.
+         * Deny with a 404 HTTP status_persetujuan code.
          *
          * @param string|null $message
          * @param int|null $code
@@ -8067,13 +8067,13 @@ namespace Illuminate\Support\Facades {
          * Create a new response instance for use during stubbing.
          *
          * @param array|string|null $body
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \GuzzleHttp\Promise\PromiseInterface 
          * @static 
-         */        public static function response($body = null, $status = 200, $headers = [])
+         */        public static function response($body = null, $status_persetujuan = 200, $headers = [])
         {
-                        return \Illuminate\Http\Client\Factory::response($body, $status, $headers);
+                        return \Illuminate\Http\Client\Factory::response($body, $status_persetujuan, $headers);
         }
                     /**
          * Get an invokable object that returns a sequence of responses in order for use during stubbing.
@@ -10767,109 +10767,109 @@ namespace Illuminate\Support\Facades {
                     /**
          * Create a new redirect response to the previous location.
          *
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param mixed $fallback
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function back($status = 302, $headers = [], $fallback = false)
+         */        public static function back($status_persetujuan = 302, $headers = [], $fallback = false)
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->back($status, $headers, $fallback);
+                        return $instance->back($status_persetujuan, $headers, $fallback);
         }
                     /**
          * Create a new redirect response to the current URI.
          *
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function refresh($status = 302, $headers = [])
+         */        public static function refresh($status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->refresh($status, $headers);
+                        return $instance->refresh($status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response, while putting the current URL in the session.
          *
          * @param string $path
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param bool|null $secure
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function guest($path, $status = 302, $headers = [], $secure = null)
+         */        public static function guest($path, $status_persetujuan = 302, $headers = [], $secure = null)
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->guest($path, $status, $headers, $secure);
+                        return $instance->guest($path, $status_persetujuan, $headers, $secure);
         }
                     /**
          * Create a new redirect response to the previously intended location.
          *
          * @param mixed $default
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param bool|null $secure
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function intended($default = '/', $status = 302, $headers = [], $secure = null)
+         */        public static function intended($default = '/', $status_persetujuan = 302, $headers = [], $secure = null)
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->intended($default, $status, $headers, $secure);
+                        return $instance->intended($default, $status_persetujuan, $headers, $secure);
         }
                     /**
          * Create a new redirect response to the given path.
          *
          * @param string $path
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param bool|null $secure
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function to($path, $status = 302, $headers = [], $secure = null)
+         */        public static function to($path, $status_persetujuan = 302, $headers = [], $secure = null)
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->to($path, $status, $headers, $secure);
+                        return $instance->to($path, $status_persetujuan, $headers, $secure);
         }
                     /**
          * Create a new redirect response to an external URL (no validation).
          *
          * @param string $path
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function away($path, $status = 302, $headers = [])
+         */        public static function away($path, $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->away($path, $status, $headers);
+                        return $instance->away($path, $status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response to the given HTTPS path.
          *
          * @param string $path
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function secure($path, $status = 302, $headers = [])
+         */        public static function secure($path, $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->secure($path, $status, $headers);
+                        return $instance->secure($path, $status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response to a named route.
          *
          * @param string $route
          * @param mixed $parameters
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function route($route, $parameters = [], $status = 302, $headers = [])
+         */        public static function route($route, $parameters = [], $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->route($route, $parameters, $status, $headers);
+                        return $instance->route($route, $parameters, $status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response to a signed named route.
@@ -10877,14 +10877,14 @@ namespace Illuminate\Support\Facades {
          * @param string $route
          * @param mixed $parameters
          * @param \DateTimeInterface|\DateInterval|int|null $expiration
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function signedRoute($route, $parameters = [], $expiration = null, $status = 302, $headers = [])
+         */        public static function signedRoute($route, $parameters = [], $expiration = null, $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->signedRoute($route, $parameters, $expiration, $status, $headers);
+                        return $instance->signedRoute($route, $parameters, $expiration, $status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response to a signed named route.
@@ -10892,28 +10892,28 @@ namespace Illuminate\Support\Facades {
          * @param string $route
          * @param \DateTimeInterface|\DateInterval|int|null $expiration
          * @param mixed $parameters
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function temporarySignedRoute($route, $expiration, $parameters = [], $status = 302, $headers = [])
+         */        public static function temporarySignedRoute($route, $expiration, $parameters = [], $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->temporarySignedRoute($route, $expiration, $parameters, $status, $headers);
+                        return $instance->temporarySignedRoute($route, $expiration, $parameters, $status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response to a controller action.
          *
          * @param string|array $action
          * @param mixed $parameters
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function action($action, $parameters = [], $status = 302, $headers = [])
+         */        public static function action($action, $parameters = [], $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->action($action, $parameters, $status, $headers);
+                        return $instance->action($action, $parameters, $status_persetujuan, $headers);
         }
                     /**
          * Get the URL generator instance.
@@ -13076,96 +13076,96 @@ namespace Illuminate\Support\Facades {
          * Create a new response instance.
          *
          * @param mixed $content
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\Response 
          * @static 
-         */        public static function make($content = '', $status = 200, $headers = [])
+         */        public static function make($content = '', $status_persetujuan = 200, $headers = [])
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->make($content, $status, $headers);
+                        return $instance->make($content, $status_persetujuan, $headers);
         }
                     /**
          * Create a new "no content" response.
          *
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\Response 
          * @static 
-         */        public static function noContent($status = 204, $headers = [])
+         */        public static function noContent($status_persetujuan = 204, $headers = [])
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->noContent($status, $headers);
+                        return $instance->noContent($status_persetujuan, $headers);
         }
                     /**
          * Create a new response for a given view.
          *
          * @param string|array $view
          * @param array $data
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\Response 
          * @static 
-         */        public static function view($view, $data = [], $status = 200, $headers = [])
+         */        public static function view($view, $data = [], $status_persetujuan = 200, $headers = [])
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->view($view, $data, $status, $headers);
+                        return $instance->view($view, $data, $status_persetujuan, $headers);
         }
                     /**
          * Create a new JSON response instance.
          *
          * @param mixed $data
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param int $options
          * @return \Illuminate\Http\JsonResponse 
          * @static 
-         */        public static function json($data = [], $status = 200, $headers = [], $options = 0)
+         */        public static function json($data = [], $status_persetujuan = 200, $headers = [], $options = 0)
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->json($data, $status, $headers, $options);
+                        return $instance->json($data, $status_persetujuan, $headers, $options);
         }
                     /**
          * Create a new JSONP response instance.
          *
          * @param string $callback
          * @param mixed $data
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param int $options
          * @return \Illuminate\Http\JsonResponse 
          * @static 
-         */        public static function jsonp($callback, $data = [], $status = 200, $headers = [], $options = 0)
+         */        public static function jsonp($callback, $data = [], $status_persetujuan = 200, $headers = [], $options = 0)
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->jsonp($callback, $data, $status, $headers, $options);
+                        return $instance->jsonp($callback, $data, $status_persetujuan, $headers, $options);
         }
                     /**
          * Create a new streamed response instance.
          *
          * @param callable $callback
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Symfony\Component\HttpFoundation\StreamedResponse 
          * @static 
-         */        public static function stream($callback, $status = 200, $headers = [])
+         */        public static function stream($callback, $status_persetujuan = 200, $headers = [])
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->stream($callback, $status, $headers);
+                        return $instance->stream($callback, $status_persetujuan, $headers);
         }
                     /**
          * Create a new streamed response instance.
          *
          * @param array $data
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param int $encodingOptions
          * @return \Symfony\Component\HttpFoundation\StreamedJsonResponse 
          * @static 
-         */        public static function streamJson($data, $status = 200, $headers = [], $encodingOptions = 15)
+         */        public static function streamJson($data, $status_persetujuan = 200, $headers = [], $encodingOptions = 15)
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->streamJson($data, $status, $headers, $encodingOptions);
+                        return $instance->streamJson($data, $status_persetujuan, $headers, $encodingOptions);
         }
                     /**
          * Create a new streamed response instance as a file download.
@@ -13212,71 +13212,71 @@ namespace Illuminate\Support\Facades {
          * Create a new redirect response to the given path.
          *
          * @param string $path
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param bool|null $secure
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function redirectTo($path, $status = 302, $headers = [], $secure = null)
+         */        public static function redirectTo($path, $status_persetujuan = 302, $headers = [], $secure = null)
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->redirectTo($path, $status, $headers, $secure);
+                        return $instance->redirectTo($path, $status_persetujuan, $headers, $secure);
         }
                     /**
          * Create a new redirect response to a named route.
          *
          * @param string $route
          * @param mixed $parameters
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function redirectToRoute($route, $parameters = [], $status = 302, $headers = [])
+         */        public static function redirectToRoute($route, $parameters = [], $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->redirectToRoute($route, $parameters, $status, $headers);
+                        return $instance->redirectToRoute($route, $parameters, $status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response to a controller action.
          *
          * @param array|string $action
          * @param mixed $parameters
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function redirectToAction($action, $parameters = [], $status = 302, $headers = [])
+         */        public static function redirectToAction($action, $parameters = [], $status_persetujuan = 302, $headers = [])
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->redirectToAction($action, $parameters, $status, $headers);
+                        return $instance->redirectToAction($action, $parameters, $status_persetujuan, $headers);
         }
                     /**
          * Create a new redirect response, while putting the current URL in the session.
          *
          * @param string $path
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param bool|null $secure
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function redirectGuest($path, $status = 302, $headers = [], $secure = null)
+         */        public static function redirectGuest($path, $status_persetujuan = 302, $headers = [], $secure = null)
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->redirectGuest($path, $status, $headers, $secure);
+                        return $instance->redirectGuest($path, $status_persetujuan, $headers, $secure);
         }
                     /**
          * Create a new redirect response to the previously intended location.
          *
          * @param string $default
-         * @param int $status
+         * @param int $status_persetujuan
          * @param array $headers
          * @param bool|null $secure
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
-         */        public static function redirectToIntended($default = '/', $status = 302, $headers = [], $secure = null)
+         */        public static function redirectToIntended($default = '/', $status_persetujuan = 302, $headers = [], $secure = null)
         {
                         /** @var \Illuminate\Routing\ResponseFactory $instance */
-                        return $instance->redirectToIntended($default, $status, $headers, $secure);
+                        return $instance->redirectToIntended($default, $status_persetujuan, $headers, $secure);
         }
                     /**
          * Register a custom macro.
@@ -13446,13 +13446,13 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $uri
          * @param string $destination
-         * @param int $status
+         * @param int $status_persetujuan
          * @return \Illuminate\Routing\Route 
          * @static 
-         */        public static function redirect($uri, $destination, $status = 302)
+         */        public static function redirect($uri, $destination, $status_persetujuan = 302)
         {
                         /** @var \Illuminate\Routing\Router $instance */
-                        return $instance->redirect($uri, $destination, $status);
+                        return $instance->redirect($uri, $destination, $status_persetujuan);
         }
                     /**
          * Create a permanent redirect from one URI to another.
@@ -13472,14 +13472,14 @@ namespace Illuminate\Support\Facades {
          * @param string $uri
          * @param string $view
          * @param array $data
-         * @param int|array $status
+         * @param int|array $status_persetujuan
          * @param array $headers
          * @return \Illuminate\Routing\Route 
          * @static 
-         */        public static function view($uri, $view, $data = [], $status = 200, $headers = [])
+         */        public static function view($uri, $view, $data = [], $status_persetujuan = 200, $headers = [])
         {
                         /** @var \Illuminate\Routing\Router $instance */
-                        return $instance->view($uri, $view, $data, $status, $headers);
+                        return $instance->view($uri, $view, $data, $status_persetujuan, $headers);
         }
                     /**
          * Register a new route with the given verbs.
@@ -18281,19 +18281,19 @@ namespace Clockwork\Support\Laravel {
          * 
          *
          * @static 
-         */        public static function resolveAsQueueJob($name, $description = null, $status = 'processed', $payload = [], $queue = null, $connection = null, $options = [])
+         */        public static function resolveAsQueueJob($name, $description = null, $status_persetujuan = 'processed', $payload = [], $queue = null, $connection = null, $options = [])
         {
                         /** @var \Clockwork\Clockwork $instance */
-                        return $instance->resolveAsQueueJob($name, $description, $status, $payload, $queue, $connection, $options);
+                        return $instance->resolveAsQueueJob($name, $description, $status_persetujuan, $payload, $queue, $connection, $options);
         }
                     /**
          * 
          *
          * @static 
-         */        public static function resolveAsTest($name, $status = 'passed', $statusMessage = null, $asserts = [])
+         */        public static function resolveAsTest($name, $status_persetujuan = 'passed', $statusMessage = null, $asserts = [])
         {
                         /** @var \Clockwork\Clockwork $instance */
-                        return $instance->resolveAsTest($name, $status, $statusMessage, $asserts);
+                        return $instance->resolveAsTest($name, $status_persetujuan, $statusMessage, $asserts);
         }
                     /**
          * 

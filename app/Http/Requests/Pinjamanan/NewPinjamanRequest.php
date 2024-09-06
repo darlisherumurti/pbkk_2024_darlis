@@ -29,7 +29,7 @@ class NewPinjamanRequest extends FormRequest
             'alamat' => 'required|string|max:255',
             'keterangan' => 'required|string|max:500',
             'durasi_peminjaman' => 'required|integer|min:1',
-            'tanggal_peminjaman' => 'required|date|before_or_equal:today',
+            'tanggal_peminjaman' => 'required|date|after_or_equal:today',
         ];
     }
 
