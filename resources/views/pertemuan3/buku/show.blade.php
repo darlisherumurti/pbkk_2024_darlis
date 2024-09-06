@@ -7,7 +7,8 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex">
-                <a href="{{ route('buku.index') }}" class="btn btn-primary mr-2">Kembali</a>
+                <button type="button" class="btn btn-primary mr-2" onclick="window.history.back()">Kembali</button>
+                {{-- <a href="{{ route('buku.index') }}" class="btn btn-primary mr-2">Kembali</a> --}}
                 @role('admin|petugas')
                     <a href="{{ route('buku.detail', $data['buku']->id) }}" class="btn btn-warning mr-2">Lebih Lengkap</a>
                 @endrole

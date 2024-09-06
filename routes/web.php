@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/','/pertemuan3/home' );
 
 Route::prefix('/pertemuan3')->group(function(){
-    Route::view('/home','pertemuan3.home');
+    Route::view('/home','pertemuan3.home')->name('home');
     
     Route::middleware(['auth'])->group(function(){
         Route::get('/buku/{buku}/pinjam', [BukuController::class,'pinjam_show'])->name('buku.pinjam.show');
@@ -63,4 +63,4 @@ Route::prefix('/pertemuan3')->group(function(){
     Route::get('/kategori/{kategori}', [KategoriController::class,'show'])->name('kategori.show');
 });
 
-Route::fallback(fn() => redirect('/pertemuan3/home')->with('error', 'Halaman Tidak Ditemukan'));
+// Route::fallback(fn() => redirect('/pertemuan3/home')->with('error', 'Halaman Tidak Ditemukan'));

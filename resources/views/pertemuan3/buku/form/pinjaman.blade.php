@@ -38,9 +38,10 @@
         </label>
         <input type="number" class="form-control" id="durasi" min="1" required>
     </div>
-    <a href="{{ route('buku.show', $data['buku']->id) }}" class="btn btn-secondary">
+    {{-- <a href="{{ route('buku.show', $data['buku']->id) }}" class="btn btn-secondary">
         Kembali
-    </a>
+    </a> --}}
+    <button type="button" class="btn btn-secondary" onclick="window.history.back()">Kembali</button>
     <button type="submit" class="btn btn-primary">Kirim</button>
 </form>
 <script>

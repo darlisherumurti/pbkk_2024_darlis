@@ -9,10 +9,11 @@ class LoginController
 {
     public function show(Request $request){
         if (Auth::check()) {
-            return redirect('/');
+            return redirect()->intended();
         }else{
             return view('pertemuan3.auth.login');
-        }    }
+        }    
+    }
 
     public function login(Request $request)
     {
@@ -35,6 +36,6 @@ class LoginController
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()->back();
     }
 }

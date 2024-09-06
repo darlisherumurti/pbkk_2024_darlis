@@ -19,6 +19,7 @@ class BukuController
         $queryString = $request->query();
         $data['buku'] = BukuService::getBukusWithKategoris($request);
         $data['buku']->appends($queryString);
+        $data['kategori'] = Kategori::all();
         return view('pertemuan3.buku.index', compact('data'));
     }
 

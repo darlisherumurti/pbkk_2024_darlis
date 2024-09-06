@@ -13,13 +13,12 @@
             @endif
         </div>
         <div class="d-flex mb-3">
-            <div class="">
-                <a href="{{ route('buku.create') }}" class="text-white">
-                    <button class="btn btn-success mr-2">
-                        Tambah Buku
-                    </button>
-                </a>
-            </div>
+            <button onclick="window.history.back()" class="btn btn-primary mr-2">Kembali</button>
+            <a href="{{ route('buku.create') }}" class="text-white">
+                <button class="btn btn-success mr-2">
+                    Tambah Buku
+                </button>
+            </a>
             {{ $data['buku']->appends(['search' => request()->get('search'), 'limit' => request()->get('limit')])->links() }}
         </div>
         <div class="w-100 ">
