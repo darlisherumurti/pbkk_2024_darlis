@@ -15,11 +15,18 @@ class PinjamanController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function pengembalian_show(Request $request)
     {
         $data['pinjaman'] = PinjamanService::getPinjamans($request);
         $data['pinjaman']->appends($request->query());
-        return view('pertemuan3.pinjaman.list', compact('data'));
+        return view('pertemuan3.pinjaman.pengembalian', compact('data'));
+    }
+
+    public function persetujuan_show(Request $request)
+    {
+        $data['pinjaman'] = PinjamanService::getPinjamans($request);
+        $data['pinjaman']->appends($request->query());
+        return view('pertemuan3.pinjaman.persetujuan', compact('data'));
     }
 
     /**
@@ -109,9 +116,5 @@ class PinjamanController
         $data['pinjaman'] = $pinjaman;
         return view('pertemuan3.pinjaman.detail', compact('data'));
     }
-    public function list(Request $request){
-        $data['pinjaman'] = PinjamanService::getPinjamans($request);
-        dd($data['pinjaman']);
-        return view('pertemuan3.pinjaman.list', compact('data'));
-    }
+
 }

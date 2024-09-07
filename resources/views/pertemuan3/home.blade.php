@@ -5,7 +5,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>BACA BUKU</h3>
+                    <h4>BACA BUKU</h4>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -17,7 +17,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>LIHAT KATEGORI</h3>
+                    <h4>LIHAT KATEGORI</h4>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -30,7 +30,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-secondary">
                     <div class="inner">
-                        <h3>PINJAMAN SAYA</h3>
+                        <h4>PINJAMAN SAYA</h4>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -44,7 +44,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>MANAGE BUKU</h3>
+                        <h4>MANAGE BUKU</h4>
                     </div>
                     <div class="icon">
                         <i class="ion ion-edit"></i>
@@ -56,7 +56,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>MANAGE KATEGORI</h3>
+                        <h4>MANAGE KATEGORI</h4>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
@@ -68,12 +68,24 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-purple">
                     <div class="inner">
-                        <h3>MANAGE PINJAMAN</h3>
+                        <h4>MANAGE PERSETUJUAN</h4>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{{ route('kategori.list') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pinjaman.persetujuan') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h4>MANAGE PENGEMBALIAN</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{ route('pinjaman.pengembalian') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -82,7 +94,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>MANAGE USERS</h3>
+                        <h4>MANAGE USERS</h4>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-stalker"></i>

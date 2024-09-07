@@ -28,11 +28,11 @@
                 <td>{{ Str::limit($p->user->name, 16, '...') }}</td>
             @endif
             <td>
-                @include('pertemuan3.pinjaman.table.persetujuan', [
+                @include('pertemuan3.pinjaman.table.status_persetujuan', [
                     'status' => $p->status_persetujuan,
                 ])
             </td>
-            <td>@include('pertemuan3.pinjaman.table.pengembalian', [
+            <td>@include('pertemuan3.pinjaman.table.status_pengembalian', [
                 'status' => $p->status_pengembalian,
             ])
             </td>

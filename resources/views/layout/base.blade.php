@@ -6,6 +6,7 @@
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('login')" :active="request()->is('pertemuan3/login')">Login</x-menu-item>
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan3/login')">Register</x-menu-item>
         @endguest
+        <x-menu-item icon="fas fa-home" :href="route('home')" :active="request()->is('pertemuan3/home')">Home</x-menu-item>
         <x-menu-tree title="Buku" icon="fas fa-book" :active="request()->is('pertemuan3/buku*')">
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('buku.index')" :active="request()->is('pertemuan3/buku')">
                 Explore Buku
@@ -37,10 +38,10 @@
                     Pinjaman saya
                 </x-menu-item>
                 @role('admin|petugas')
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.list')" :active="request()->is('pertemuan3/pinjaman/list')">
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.persetujuan')" :active="request()->is('pertemuan3/pinjaman/list')">
                         Manage Persetujuan
                     </x-menu-item>
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.list')" :active="request()->is('pertemuan3/pinjaman/pengembalian/list')">
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.pengembalian')" :active="request()->is('pertemuan3/pinjaman/pengembalian/list')">
                         Manage Pengembalian
                     </x-menu-item>
                 @endrole

@@ -34,7 +34,9 @@ Route::prefix('/pertemuan3')->group(function(){
             Route::get('/buku/{buku}/detail', [BukuController::class,'detail'])->name('buku.detail');
             Route::get('/kategori/{kategori}/detail', [KategoriController::class,'detail'])->name('kategori.detail');
             Route::get('/kategori/list', [KategoriController::class,'list'])->name('kategori.list');
-            Route::get('/pinjaman/list', [PinjamanController::class,'index'])->name('pinjaman.list');
+
+            Route::get('/pinjaman/pengembalian', [PinjamanController::class,'pengembalian_show'])->name('pinjaman.pengembalian');
+            Route::get('/pinjaman/persetujuan', [PinjamanController::class,'persetujuan_show'])->name('pinjaman.persetujuan');
             Route::get('/pinjaman/create', [PinjamanController::class,'create'])->name('pinjaman.create');
             Route::get('/pinjaman/buku', [PinjamanController::class,'buku_index'])->name('pinjaman.buku.index');
             Route::get('/pinjaman/buku/{buku}', [PinjamanController::class,'buku_show'])->name('pinjaman.buku.show'); 

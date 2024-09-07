@@ -12,7 +12,7 @@
                     {{ $data['pinjaman']->total() }} entries</div>
             </div>
             <div class="w-100 ">
-                <form action="{{ route('pinjaman.list') }}" class="w-100" method="GET" class="form-inline">
+                <form action="{{ route('pinjaman.peminjaman') }}" class="w-100" method="GET" class="form-inline">
                     <div class="row gap-2 ">
                         <div class="col col-12 col-md-6 ">
                             <div class="input-group  flex-grow-1">

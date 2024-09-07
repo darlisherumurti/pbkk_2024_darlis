@@ -18,6 +18,8 @@ class PinjamanService
 
 
         $query = Pinjaman::query()
+        ->withRelation('buku')
+        ->withRelation('user')
         ->search($search)
         ->searchRelation($search, 'user', ['name'])
         ->searchRelation($search, 'buku', ['judul']);
@@ -64,13 +66,15 @@ class PinjamanService
 
     public function getUserPinjamans(Request $request, User $user) { 
 
-        $searchTerm = $request->input('search') ?? '';
+        $search = $request->input('search') ?? '';
         $status_persetujuan = $request->input('status_persetujuan') ?? '';
         $status_pengembalian = $request->input('status_pengembalian') ?? '';
 
         $query = Pinjaman::query()
-        ->search($searchTerm)
-        ->searchRelation($searchTerm, 'buku', ['judul'])
+        ->withRelation('buku')
+        ->withRelation('user')
+        ->search($search)
+        ->searchRelation($search, 'buku', ['judul'])
         ->filterByRelation($user->id, 'user');
 
         if($status_persetujuan) {
