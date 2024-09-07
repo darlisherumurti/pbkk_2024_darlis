@@ -61,22 +61,6 @@ trait Searchable
         }
     }
 
-    protected function scopeOrSearchRelation(Builder $query, string $search, string $relation ,array $relatedColumns): Builder
-    {
-
-        if($this->relationExists($relation)) {
-            $query->whereHas($relation, function ($q) use ($search, $relatedColumns) {
-                foreach ($relatedColumns as $relatedColumn) {
-                    $q->orwhere("{$relatedColumn}", 'like', '%' . $search . '%');
-                }
-            });
-            return $query;
-        } else {
-            return $query;
-        }
-    }
-    
-
     protected function scopeFilter(Builder $query, string $search, string $column = 'id'): Builder 
     {
         if(Schema::hasColumn($this->getTable(), $column)) {

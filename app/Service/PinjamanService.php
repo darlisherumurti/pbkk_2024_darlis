@@ -68,10 +68,11 @@ class PinjamanService
         $status_persetujuan = $request->input('status_persetujuan') ?? '';
         $status_pengembalian = $request->input('status_pengembalian') ?? '';
 
-        $query = $user->pinjamans()
+        $query = Pinjaman::query()
         ->search($searchTerm)
-        ->orSearchRelation($searchTerm, 'buku', ['judul']);
-        
+        ->searchRelation($searchTerm, 'buku', ['judul'])
+        ->filterByRelation($user->id, 'user');
+
         if($status_persetujuan) {
             $query->filter($status_persetujuan, 'status_persetujuan');
         }
