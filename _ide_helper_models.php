@@ -16,42 +16,27 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string $judul
- * @property string $penulis
- * @property string $penerbit
- * @property string|null $image_url
- * @property int|null $tahun_terbit
- * @property int|null $jumlah_halaman
- * @property string $isbn
- * @property string|null $deskripsi
+ * @property string $nama
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Kategori> $kategoris
- * @property-read int|null $kategoris_count
- * @method static \Database\Factories\BukuFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Buku filter(string $search, string $column = 'id')
- * @method static \Illuminate\Database\Eloquent\Builder|Buku filters(string $search, array $columns = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Buku newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Buku newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Buku paginator(\Illuminate\Http\Request $request, $limit = 10)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku query()
- * @method static \Illuminate\Database\Eloquent\Builder|Buku search(string $search)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku searchRelation(string $search, string $relation, array $relatedColumns)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereDeskripsi($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereImageUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereIsbn($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereJudul($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereJumlahHalaman($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku wherePenerbit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku wherePenulis($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereTahunTerbit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Buku withRelation(string $relation)
- * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|Buku filterByRelation(string $search, string $relation = '', $column = 'id')
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Buku> $bukus
+ * @property-read int|null $bukus_count
+ * @method static \Database\Factories\KategoriFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori filter(string $search, string $column = 'id')
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori filterByRelation(string $search, string $relation = '', $column = 'id')
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori filters(string $search, array $columns = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori paginator(\Illuminate\Http\Request $request, $limit = 10)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori search(string $search, $ignoreTimestamps = true)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori searchRelation(string $search, string $relation, array $relatedColumns)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kategori withRelation(string $relation)
  */
-	class Buku extends \Eloquent {}
+	class Kategori extends \Eloquent {}
 }
 

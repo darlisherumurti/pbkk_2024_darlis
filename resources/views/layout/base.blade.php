@@ -38,10 +38,10 @@
                     Pinjaman saya
                 </x-menu-item>
                 @role('admin|petugas')
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.persetujuan')" :active="request()->is('pertemuan3/pinjaman/list')">
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.persetujuan')" :active="request()->is('pertemuan3/pinjaman/persetujuan')">
                         Manage Persetujuan
                     </x-menu-item>
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.pengembalian')" :active="request()->is('pertemuan3/pinjaman/pengembalian/list')">
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.pengembalian')" :active="request()->is('pertemuan3/pinjaman/pengembalian')">
                         Manage Pengembalian
                     </x-menu-item>
                 @endrole
