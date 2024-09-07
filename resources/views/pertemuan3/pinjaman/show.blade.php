@@ -48,16 +48,20 @@
                     <td>{{ $data['pinjaman']->tanggal_peminjaman }}</td>
                 </tr>
                 <tr>
-                    <th>Tanggal Pengembalian</th>
-                    <td>{{ $data['pinjaman']->tanggal_pengembalian }}</td>
-                </tr>
-                <tr>
                     <th>Tanggal Disetujui</th>
                     <td>{{ $data['pinjaman']->tanggal_disetujui ?? '-' }}</td>
                 </tr>
                 <tr>
                     <th>Durasi Peminjaman</th>
                     <td>{{ $data['pinjaman']->durasi_peminjaman }} Hari</td>
+                </tr>
+                <tr>
+                    <th>Tanggal Pengembalian</th>
+                    <td>{{ $data['pinjaman']->tanggal_pengembalian }}</td>
+                </tr>
+                <tr>
+                    <th>Tanggal Dikembalikan</th>
+                    <td>{{ $data['pinjaman']->tanggal_dikembalikan ?? '-' }}</td>
                 </tr>
                 <tr>
             </table>

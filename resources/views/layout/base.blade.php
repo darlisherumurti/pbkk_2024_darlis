@@ -38,7 +38,10 @@
                 </x-menu-item>
                 @role('admin|petugas')
                     <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.list')" :active="request()->is('pertemuan3/pinjaman/list')">
-                        Manage Pinjaman
+                        Manage Persetujuan
+                    </x-menu-item>
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.list')" :active="request()->is('pertemuan3/pinjaman/pengembalian/list')">
+                        Manage Pengembalian
                     </x-menu-item>
                 @endrole
             </x-menu-tree>
@@ -58,3 +61,17 @@
         @endrole
     </x-menu-tree>
 @endsection
+
+@push('scripts')
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            })
+        </script>
+    @endif
+
+@endpush

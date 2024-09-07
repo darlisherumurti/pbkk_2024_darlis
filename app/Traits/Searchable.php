@@ -23,14 +23,19 @@ trait Searchable
         return method_exists($this, $relation);
     }
 
-    protected function scopeSearch(Builder $query, string $search): Builder
+    protected function scopeSearch(Builder $query, string $search, $ignoreTimestamps = true): Builder
     {
         $columns = Schema::getColumnListing($this->getTable());
-        return $query->where(function ($q) use ($search, $columns) {
+        if ($ignoreTimestamps) {
+            $columns = array_diff($columns, ['created_at', 'updated_at']);
+        }
+        $table = $this->getTable();
+        $query->where(function ($q) use ($search, $columns, $table) {
             foreach ($columns as $column) {
-                $q->orWhere($column, 'like', "%{$search}%");
+                $q->orWhere("{$table}"."."."{$column}", 'like', "%{$search}%");
             }
         });
+        return $query;
     }
 
     protected function scopeWithRelation(Builder $query, string $relation): Builder
@@ -45,38 +50,33 @@ trait Searchable
     protected function scopeSearchRelation(Builder $query, string $search, string $relation ,array $relatedColumns): Builder
     {
         if($this->relationExists($relation)) {
-            return $query->whereHas($relation, function ($q) use ($search, $relatedColumns) {
+            $query->orWhereHas($relation, function ($q) use ($search, $relatedColumns) {
                 foreach ($relatedColumns as $relatedColumn) {
-                    $q->orWhere("{$relatedColumn}", 'like', '%' . $search . '%');
+                    $q->where("{$relatedColumn}", 'like', '%' . $search . '%');
                 }
             });
+            return $query;
         } else {
             return $query;
         }
     }
 
-    protected function scopeSearchWithRelation(Builder $query, string $search, string $relation, array $relatedColumns): Builder
+    protected function scopeOrSearchRelation(Builder $query, string $search, string $relation ,array $relatedColumns): Builder
     {
-        $columns = Schema::getColumnListing($this->getTable());
 
-        if($this->relationExists($relation)) {   
-            $query->WhereHas($relation, function ($q) use ($search, $relatedColumns) {
+        if($this->relationExists($relation)) {
+            $query->whereHas($relation, function ($q) use ($search, $relatedColumns) {
                 foreach ($relatedColumns as $relatedColumn) {
-                    $q->orWhere("{$relatedColumn}", 'like', '%' . $search . '%');
+                    $q->orwhere("{$relatedColumn}", 'like', '%' . $search . '%');
                 }
             });
-            $query->orWhere(function ($q) use ($search, $columns) {
-                foreach ($columns as $column) {
-                    $q->orWhere($column, 'like', "%{$search}%");
-                }
-            });
-            dd($query->toSql(), $query->getBindings(), $query->get());
-
             return $query;
         } else {
             return $query;
         }
     }
+    
+
     protected function scopeFilter(Builder $query, string $search, string $column = 'id'): Builder 
     {
         if(Schema::hasColumn($this->getTable(), $column)) {
@@ -102,7 +102,6 @@ trait Searchable
             });
         }
     }
-
 
 
 }

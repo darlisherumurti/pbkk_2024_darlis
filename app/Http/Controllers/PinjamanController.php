@@ -7,6 +7,7 @@ use App\Http\Requests\Pinjamanan\NewPinjamanRequest;
 use App\Models\Buku;
 use App\Models\Pinjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class PinjamanController
@@ -80,24 +81,27 @@ class PinjamanController
     {
         $user = $request->user();
         $data['pinjaman'] = PinjamanService::getUserPinjamans($request, $user);
-        // $data['pinjaman']->appends($request->query());
-
+        $data['pinjaman']->appends($request->query());
+    
         return view('pertemuan3.pinjaman.me', compact('data'));
     }
 
     public function setujui(Pinjaman $pinjaman)
     {
-        //
+        PinjamanService::setujuiPinjaman($pinjaman);
+        return redirect()->back()->with('success', 'Pinjaman ' . $pinjaman->buku->judul . ' telah disetujui.');
     }
 
     public function tolak(Pinjaman $pinjaman)
     {
-        //
+        PinjamanService::tolakPinjaman($pinjaman);
+        return redirect()->back()->with('success', 'Pinjaman ' . $pinjaman->buku->judul . ' telah ditolak.');
     }
 
     public function kembalikan(Pinjaman $pinjaman)
     {
-        //
+        PinjamanService::kembalikanPinjaman($pinjaman);
+        return redirect()->back()->with('success', 'Pinjaman ' . $pinjaman->buku->judul . ' telah dikembalikan.');
     }
 
     public function detail(Pinjaman $pinjaman)
@@ -105,9 +109,9 @@ class PinjamanController
         $data['pinjaman'] = $pinjaman;
         return view('pertemuan3.pinjaman.detail', compact('data'));
     }
-
     public function list(Request $request){
         $data['pinjaman'] = PinjamanService::getPinjamans($request);
+        dd($data['pinjaman']);
         return view('pertemuan3.pinjaman.list', compact('data'));
     }
 }

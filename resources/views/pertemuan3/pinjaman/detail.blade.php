@@ -8,16 +8,7 @@
         <div class="card-header">
             <div class="d-flex">
                 <button type="button" class="btn btn-primary mr-2" onclick="window.history.back()">Kembali</button>
-                @if ($data['pinjaman']->status_persetujuan == 'Menunggu Persetujuan')
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                            -- Butuh Tindakan --</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Setujui</a>
-                            <a class="dropdown-item" href="#">Tolak</a>
-                        </div>
-                    </div>
-                @endif
+
             </div>
         </div>
         <div class="card-body">
@@ -69,10 +60,7 @@
                     <th>Tanggal Peminjaman</th>
                     <td>{{ $data['pinjaman']->tanggal_peminjaman }}</td>
                 </tr>
-                <tr>
-                    <th>Tanggal Pengembalian</th>
-                    <td>{{ $data['pinjaman']->tanggal_pengembalian }}</td>
-                </tr>
+
                 <tr>
                     <th>Tanggal Disetujui</th>
                     <td>{{ $data['pinjaman']->tanggal_disetujui ?? '-' }}</td>
@@ -82,11 +70,58 @@
                     <td>{{ $data['pinjaman']->durasi_peminjaman }} Hari</td>
                 </tr>
                 <tr>
+                    <th>Tanggal Pengembalian</th>
+                    <td>{{ $data['pinjaman']->tanggal_pengembalian }}</td>
+                </tr>
+                <tr>
+                    <th>Tanggal Dikembalikan</th>
+                    <td>{{ $data['pinjaman']->tanggal_dikembalikan ?? '-' }}</td>
+                </tr>
             </table>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex">
+                @if ($data['pinjaman']->status_persetujuan == 'Menunggu Persetujuan')
+                    <form class="actionForm" action="{{ route('pinjaman.setujui', $data['pinjaman']->id) }}"
+                        method="post">
+                        @csrf
+                        <button type="submit" class="btn mr-2 btn-success">Setujui</button>
+                    </form>
+                    <form class="actionForm" action="{{ route('pinjaman.tolak', $data['pinjaman']->id) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn mr-2 btn-danger">Tolak</button>
+                    </form>
+                @endif
+            </div>
         </div>
     </div>
     @include('pertemuan3.pinjaman.partial.buku', ['buku' => $data['pinjaman']->buku])
 @endsection
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.actionForm').forEach(form => {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting immediately
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Submit the form
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        })
+    </script>
 @endpush

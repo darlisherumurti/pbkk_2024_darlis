@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pinjaman', function (Blueprint $table) {
-            $table->id();
+        Schema::create('pinjamans', function (Blueprint $table) {
+            $table->string('id', 8)->primary();             
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('buku_id')->constrained('buku')->onDelete('cascade');
             $table->enum('status_persetujuan', ['Menunggu Persetujuan', 'Disetujui', 'Ditolak'])->default('Menunggu Persetujuan');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('keterangan');  
             $table->integer('durasi_peminjaman'); // hari
             $table->date('tanggal_peminjaman');
-            $table->date('tanggal_persetujuan')->nullable();
+            $table->date('tanggal_disetujui')->nullable();
             $table->date('tanggal_pengembalian')->nullable();
             $table->date('tanggal_dikembalikan')->nullable();
             $table->timestamps();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pinjaman');
+        Schema::dropIfExists('pinjamans');
     }
 };

@@ -36,7 +36,7 @@ class PinjamanSeeder extends Seeder
                 'nama_lengkap' => $faker->name,
                 'durasi_peminjaman' => $faker->numberBetween(1, 30),
                 'tanggal_peminjaman' => $faker->date($format = 'Y-m-d', $max = 'now'),
-                'tanggal_persetujuan' => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'tanggal_disetujui' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'tanggal_pengembalian' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'tanggal_dikembalikan' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'keterangan' => $faker->sentence($nbWords = 10, $variableNbWords = true),

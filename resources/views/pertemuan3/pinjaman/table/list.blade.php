@@ -2,22 +2,31 @@
     <tr>
         <th>ID</th>
         <th>Buku</th>
-        <th>Username</th>
+        @if (!request()->is('pertemuan3/pinjaman/me'))
+            <th>Username</th>
+        @endif
         <th>Status Persetujuan</th>
         <th>Status Pengembalian</th>
         <th>Tanggal Peminjaman</th>
+        <th>Tanggal Pengembalian</th>
         <th>Durasi Peminjaman</th>
-        <th>
-            Aksi
-        </th>
+        @role('admin|petugas')
+            <th>
+                Aksi
+            </th>
+        @endrole
     </tr>
     @foreach ($pinjaman as $p)
         <tr>
-            <td>{{ $p->id }}</td>
+            <td>
+                <a href="{{ route('pinjaman.show', $p->id) }}">{{ $p->id }}</a>
+            </td>
             <td>
                 <a href="{{ route('buku.show', $p->buku->id) }}">{{ Str::limit($p->buku->judul, 18, '...') }}</a>
             </td>
-            <td>{{ Str::limit($p->user->name, 16, '...') }}</td>
+            @if (!request()->is('pertemuan3/pinjaman/me'))
+                <td>{{ Str::limit($p->user->name, 16, '...') }}</td>
+            @endif
             <td>
                 @include('pertemuan3.pinjaman.table.persetujuan', [
                     'status' => $p->status_persetujuan,
@@ -28,17 +37,12 @@
             ])
             </td>
             <td>{{ $p->tanggal_peminjaman }}</td>
+            <td>{{ $p->tanggal_pengembalian }}</td>
             <td>{{ $p->durasi_peminjaman }} Hari</td>
-            <td>
-                <div class="d-flex">
-                    @if (request()->is('pertemuan3/pinjaman/me'))
-                        <a href="{{ route('pinjaman.show', $p->id) }}" class="btn btn-sm mr-2 btn-primary">Detail</a>
-                    @elseif(request()->is('pertemuan3/pinjaman/list'))
-                        @role('admin|petugas')
-                            <a href="{{ route('pinjaman.detail', $p->id) }}" class="btn btn-sm mr-2 btn-primary">Detail</a>
-                        @endrole
-                    @endif
-                    @role('admin|petugas')
+            @role('admin|petugas')
+                <td>
+                    <div class="d-flex">
+                        <a class="btn btn-sm btn-primary mr-2" href="{{ route('pinjaman.detail', $p->id) }}">Detail</a>
                         @if ($p->status_persetujuan == 'Menunggu Persetujuan')
                             <form class="actionForm" action="{{ route('pinjaman.setujui', $p->id) }}" method="post">
                                 @csrf
@@ -49,10 +53,9 @@
                                 <button type="submit" class="btn btn-sm mr-2 btn-danger">Tolak</button>
                             </form>
                         @endif
-                    @endrole
-                </div>
-            </td>
-
+                    </div>
+                </td>
+            @endrole
         </tr>
     @endforeach
 </table>
