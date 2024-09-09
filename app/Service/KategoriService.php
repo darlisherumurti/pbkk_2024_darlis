@@ -21,4 +21,22 @@ class KategoriService
         return $query->paginator($request);
     }
 
+    public function createKategori(Request $request){
+        $validated = $request->validate([
+            'nama' => ['required', 'string', 'max:255', 'unique:kategori,nama'],
+        ]);
+        return Kategori::create($validated);
+    }
+
+    public function updateKategori(Request $request, Kategori $kategori){
+        $validated = $request->validate([
+            'nama' => ['required', 'string', 'max:255', 'unique:kategori,nama,' . $request->input('id')],
+        ]);
+        return $kategori->update($validated);
+    }
+
+    public function deleteKategori(Kategori $kategori){
+        return $kategori->delete();
+    }
+
 }

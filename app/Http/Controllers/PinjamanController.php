@@ -60,30 +60,6 @@ class PinjamanController
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pinjaman $pinjaman)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Pinjaman $pinjaman)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pinjaman $pinjaman)
-    {
-        //
-    }
-
     public function me(Request $request)
     {
         $user = $request->user();

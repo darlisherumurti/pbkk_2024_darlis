@@ -38,4 +38,6 @@ class LoginController
         $request->session()->regenerateToken();
         return redirect()->back();
     }
+
+
 }
