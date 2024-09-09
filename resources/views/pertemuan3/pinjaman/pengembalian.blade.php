@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-header">
-            @include('pertemuan3.pinjaman.partial.search', [
+            @include('pertemuan4.pinjaman.partial.search', [
                 'pinjaman' => $data['pinjaman'],
                 'url' => route('pinjaman.pengembalian'),
             ])
@@ -15,7 +15,7 @@
         <div class="card-body">
             <div class="overflow-auto">
 
-                @include('pertemuan3.pinjaman.table.pengembalian', ['pinjaman' => $data['pinjaman']])
+                @include('pertemuan4.pinjaman.table.pengembalian', ['pinjaman' => $data['pinjaman']])
             </div>
         </div>
     </div>

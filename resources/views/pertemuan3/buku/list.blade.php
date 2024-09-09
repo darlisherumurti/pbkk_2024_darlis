@@ -66,7 +66,7 @@
         </div>
 
         <div class="card-body overflow-auto">
-            @include('pertemuan3.buku.table.manage', [
+            @include('pertemuan4.buku.table.manage', [
                 'buku' => $data['buku'],
             ])
         </div>

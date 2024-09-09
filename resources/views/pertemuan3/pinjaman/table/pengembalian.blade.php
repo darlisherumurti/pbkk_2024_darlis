@@ -2,7 +2,7 @@
     <tr>
         <th>ID</th>
         <th>Buku</th>
-        @if (!request()->is('pertemuan3/pinjaman/me'))
+        @if (!request()->is('pertemuan4/pinjaman/me'))
             <th>Username</th>
         @endif
         <th>Status Persetujuan</th>
@@ -23,15 +23,15 @@
             <td>
                 <a href="{{ route('buku.show', $p->buku->id) }}">{{ Str::limit($p->buku->judul, 18, '...') }}</a>
             </td>
-            @if (!request()->is('pertemuan3/pinjaman/me'))
+            @if (!request()->is('pertemuan4/pinjaman/me'))
                 <td>{{ Str::limit($p->user->name, 16, '...') }}</td>
             @endif
             <td>
-                @include('pertemuan3.pinjaman.table.status_persetujuan', [
+                @include('pertemuan4.pinjaman.table.status_persetujuan', [
                     'status' => $p->status_persetujuan,
                 ])
             </td>
-            <td>@include('pertemuan3.pinjaman.table.status_pengembalian', [
+            <td>@include('pertemuan4.pinjaman.table.status_pengembalian', [
                 'status' => $p->status_pengembalian,
             ])
             </td>

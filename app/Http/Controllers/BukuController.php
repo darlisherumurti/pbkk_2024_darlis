@@ -20,7 +20,7 @@ class BukuController
         $data['buku'] = BukuService::getBukusWithKategoris($request);
         $data['buku']->appends($queryString);
         $data['kategori'] = Kategori::all();
-        return view('pertemuan3.buku.index', compact('data'));
+        return view('pertemuan4.buku.index', compact('data'));
     }
 
     /**
@@ -29,7 +29,7 @@ class BukuController
     public function create()
     {   
         $data['kategori'] = Kategori::all();
-        return view('pertemuan3.buku.create', compact('data'));
+        return view('pertemuan4.buku.create', compact('data'));
     }
 
     /**
@@ -47,7 +47,7 @@ class BukuController
     public function show(Buku $buku)
     {
         $data['buku'] = $buku;
-        return view('pertemuan3.buku.show', compact('data'));
+        return view('pertemuan4.buku.show', compact('data'));
     }
 
     /**
@@ -58,7 +58,7 @@ class BukuController
         $data['buku'] = $buku;
         $data['buku-kategori'] = $buku->kategoris->pluck('id')->toArray();
         $data['kategori'] = Kategori::all();
-        return view('pertemuan3.buku.edit', compact('data'));
+        return view('pertemuan4.buku.edit', compact('data'));
     }
 
     /**
@@ -86,11 +86,11 @@ class BukuController
         $data['buku'] = BukuService::getBukusWithKategoris($request);
         $data['buku']->appends($queryString);
         $data['kategori'] = Kategori::all();
-        return view('pertemuan3.buku.list', compact('data'));
+        return view('pertemuan4.buku.list', compact('data'));
     }
 
     public function detail(Buku $buku){
         $data['buku'] = $buku;
-        return view('pertemuan3.buku.detail', compact('data'));
+        return view('pertemuan4.buku.detail', compact('data'));
     }
 }

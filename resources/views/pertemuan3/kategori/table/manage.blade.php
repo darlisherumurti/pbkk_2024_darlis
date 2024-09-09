@@ -27,7 +27,7 @@
 
                         </a>
 
-                        @include('pertemuan3.kategori.form.hapus', [
+                        @include('pertemuan4.kategori.form.hapus', [
                             'kategori' => $k,
                             'class' => 'btn-sm',
                             'text' => 'Hapus',

@@ -14,7 +14,7 @@ class RegisterController
         if (Auth::check()) {
             return redirect()->back();
         }else{
-            return view('pertemuan3.auth.register');
+            return view('pertemuan4.auth.register');
         }
     }
 

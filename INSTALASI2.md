@@ -2,7 +2,7 @@
 2. clone branch ini
 
 ```bash
-git clone -b pertemuan3  https://github.com/darlisherumurti/pbkk_2024_darlis <nama folder>
+git clone -b pertemuan4  https://github.com/darlisherumurti/pbkk_2024_darlis <nama folder>
 ```
 
 3. masuk ke folder

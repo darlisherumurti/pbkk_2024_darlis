@@ -163,7 +163,7 @@
             <a href="{{ route('buku.index') }}" class="btn btn-warning">Kembali ke Daftar Buku</a>
             <a href="{{ route('buku.show', $data['buku']->id) }}" class="btn btn-warning">
                 Kembali ke Detail Buku</a>
-            @include('pertemuan3.buku.form.hapus', ['buku' => $data['buku']])
+            @include('pertemuan4.buku.form.hapus', ['buku' => $data['buku']])
         </div>
     </div>
 @endsection

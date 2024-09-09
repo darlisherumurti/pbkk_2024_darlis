@@ -33,7 +33,7 @@
             {{-- <a href="{{ route('kategori.list') }}" class="btn btn-primary">Kembali ke Daftar Kategori</a> --}}
             @role('admin')
                 <a href="{{ route('kategori.edit', $data['kategori']->id) }}" class="btn btn-warning">Edit Kategori</a>
-                @include('pertemuan3.kategori.form.hapus', ['kategori' => $data['kategori']])
+                @include('pertemuan4.kategori.form.hapus', ['kategori' => $data['kategori']])
             @endrole
         </div>
     </div>
@@ -42,7 +42,7 @@
             <div class="card-title">Buku</div>
         </div>
         <div class="card-body">
-            @include('pertemuan3.buku.table.manage', ['buku' => $data['kategori']->bukus])
+            @include('pertemuan4.buku.table.manage', ['buku' => $data['kategori']->bukus])
         </div>
     </div>
 @endsection

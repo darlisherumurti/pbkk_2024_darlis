@@ -36,7 +36,7 @@
                             <button class="btn btn-sm mr-2 btn-primary">Edit</button>
 
                         </a>
-                        @include('pertemuan3.buku.form.hapus', [
+                        @include('pertemuan4.buku.form.hapus', [
                             'buku' => $b,
                             'class' => 'btn-sm',
                             'text' => 'Hapus',

@@ -7,10 +7,10 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PinjamanController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/','/pertemuan3/home' );
+Route::redirect('/','/pertemuan4/home' );
 
-Route::prefix('/pertemuan3')->group(function(){
-    Route::view('/home','pertemuan3.home')->name('home');
+Route::prefix('/pertemuan4')->group(function(){
+    Route::view('/home','pertemuan4.home')->name('home');
     
     Route::middleware(['auth'])->group(function(){
 
@@ -66,4 +66,4 @@ Route::prefix('/pertemuan3')->group(function(){
     Route::get('/pinjaman/{pinjaman}', [PinjamanController::class,'show'])->name('pinjaman.show');
 });
 
-// Route::fallback(fn() => redirect('/pertemuan3/home')->with('error', 'Halaman Tidak Ditemukan'));
+// Route::fallback(fn() => redirect('/pertemuan4/home')->with('error', 'Halaman Tidak Ditemukan'));

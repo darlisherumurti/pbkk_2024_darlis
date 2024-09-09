@@ -50,7 +50,7 @@
             </form>
         </div>
         <div class="overflow-auto">
-            @include('pertemuan3.kategori.table.manage', [
+            @include('pertemuan4.kategori.table.manage', [
                 'kategori' => $data['kategori'],
             ])
         </div>

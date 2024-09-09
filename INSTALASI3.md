@@ -2,7 +2,7 @@
 2. ganti branch
 
 ```bash
-git checkout -b pertemuan3 origin/pertemuan3
+git checkout -b pertemuan4 origin/pertemuan4
 ```
 
 4. install dependency (jika perlu)

@@ -43,7 +43,7 @@
                 <tr>
                     <th>Status Persetujuan</th>
                     <td>
-                        @include('pertemuan3.pinjaman.table.persetujuan', [
+                        @include('pertemuan4.pinjaman.table.persetujuan', [
                             'status' => $data['pinjaman']->status_persetujuan,
                         ])
                     </td>
@@ -51,7 +51,7 @@
                 <tr>
                     <th>Status Pengembalian</th>
                     <td>
-                        @include('pertemuan3.pinjaman.table.pengembalian', [
+                        @include('pertemuan4.pinjaman.table.pengembalian', [
                             'status' => $data['pinjaman']->status_pengembalian,
                         ])
                     </td>
@@ -95,7 +95,7 @@
             </div>
         </div>
     </div>
-    @include('pertemuan3.pinjaman.partial.buku', ['buku' => $data['pinjaman']->buku])
+    @include('pertemuan4.pinjaman.partial.buku', ['buku' => $data['pinjaman']->buku])
 @endsection
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>

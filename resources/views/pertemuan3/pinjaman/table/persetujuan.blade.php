@@ -23,7 +23,7 @@
             </td>
             <td>{{ Str::limit($p->user->name, 16, '...') }}</td>
             <td>
-                @include('pertemuan3.pinjaman.table.status_persetujuan', [
+                @include('pertemuan4.pinjaman.table.status_persetujuan', [
                     'status' => $p->status_persetujuan,
                 ])
             </td>

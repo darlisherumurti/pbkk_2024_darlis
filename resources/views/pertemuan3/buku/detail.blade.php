@@ -103,7 +103,7 @@
             {{-- <a href="{{ route('buku.list') }}" class="btn btn-primary">Kembali ke Daftar Buku</a> --}}
             @role('admin')
                 <a href="{{ route('buku.edit', $data['buku']->id) }}" class="btn btn-warning">Edit Buku</a>
-                @include('pertemuan3.buku.form.hapus', ['buku' => $data['buku']])
+                @include('pertemuan4.buku.form.hapus', ['buku' => $data['buku']])
             @endrole
         </div>
     </div>
