@@ -102,7 +102,7 @@ class PinjamanService
 
     public function kembalikanPinjaman(Pinjaman $pinjaman) {
         $pinjaman->status_pengembalian = 'Sudah dikembalikan';
-        $pinjaman->tanggal_dikembalikan = now();
+        $pinjaman->tanggal_dikembalikan = now()->format('Y-m-d');
         $pinjaman->save();
         return $pinjaman;
     }

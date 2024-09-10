@@ -73,7 +73,7 @@
                 'url' => route('pinjaman.me'),
             ])
         </div>
-        <div class="card-body">
+        <div class="card-body overflow-auto">
             @include('pertemuan4.pinjaman.table.list', ['pinjaman' => $data['pinjaman']])
         </div>
     </div>
