@@ -12,7 +12,9 @@
     "paths": {
         "/api/pertemuan4/register": {
             "post": {
+                "tags": ["Auth"],
                 "summary": "Register a new user",
+                "security": [],
                 "description": "Endpoint to register a new user by providing necessary user details.",
                 "requestBody": {
                     "required": true,
@@ -51,6 +53,8 @@
         "/api/pertemuan4/login": {
             "post": {
                 "summary": "User Login",
+                "security": [],
+                "tags": ["Auth"],
                 "description": "Allows a user to log in by providing their email and password.",
                 "operationId": "loginUser",
                 "requestBody": {
@@ -101,9 +105,22 @@
                 }
             }
         },
+        "/api/pertemuan4/logout": {
+            "post": {
+                "summary": "User Logout",
+                "tags": ["Auth"],
+                "operationId": "logoutUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful logout"
+                    }
+                }
+            }
+        },
         "/api/pertemuan4/bukus": {
             "get": {
                 "summary": "Get bukus",
+                "tags": ["Bukus"],
                 "description": "Get a list of all bukus.",
                 "operationId": "getBukus",
                 "parameters": [
@@ -137,11 +154,169 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Create buku",
+                "tags": ["Bukus"],
+                "operationId": "createBuku",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "judul": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "description": "Title of the book"
+                                    },
+                                    "penulis": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "description": "Author of the book"
+                                    },
+                                    "penerbit": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "description": "Publisher of the book"
+                                    },
+                                    "image_url": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL of the book's cover image"
+                                    },
+                                    "tahun_terbit": {
+                                        "type": "integer",
+                                        "description": "Year of publication",
+                                        "nullable": true
+                                    },
+                                    "jumlah_halaman": {
+                                        "type": "integer",
+                                        "description": "Number of pages",
+                                        "nullable": true
+                                    },
+                                    "isbn": {
+                                        "type": "string",
+                                        "maxLength": 13,
+                                        "description": "ISBN number of the book"
+                                    },
+                                    "kategori": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "description": "Category ID"
+                                        },
+                                        "description": "Categories the book belongs to"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "description": "Description of the book",
+                                        "nullable": true
+                                    }
+                                },
+                                "required": [
+                                    "judul",
+                                    "penulis",
+                                    "penerbit",
+                                    "image_url",
+                                    "isbn",
+                                    "kategori"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Buku created"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update buku",
+                "tags": ["Bukus"],
+                "operationId": "updateBuku",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "judul": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "description": "Title of the book"
+                                    },
+                                    "penulis": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "description": "Author of the book"
+                                    },
+                                    "penerbit": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "description": "Publisher of the book"
+                                    },
+                                    "image_url": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL of the book's cover image"
+                                    },
+                                    "tahun_terbit": {
+                                        "type": "integer",
+                                        "description": "Year of publication",
+                                        "nullable": true
+                                    },
+                                    "jumlah_halaman": {
+                                        "type": "integer",
+                                        "description": "Number of pages",
+                                        "nullable": true
+                                    },
+                                    "isbn": {
+                                        "type": "string",
+                                        "maxLength": 13,
+                                        "description": "ISBN number of the book"
+                                    },
+                                    "kategori": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "description": "Category ID"
+                                        },
+                                        "description": "Categories the book belongs to"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "description": "Description of the book",
+                                        "nullable": true
+                                    }
+                                },
+                                "required": [
+                                    "judul",
+                                    "penulis",
+                                    "penerbit",
+                                    "image_url",
+                                    "isbn",
+                                    "kategori"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Buku updated"
+                    }
+                }
             }
         },
-        "/api/pertemuan4/bukus/{buku}": {
+        "/api/pertemuan4/bukus/{id}": {
             "get": {
-                "summary": "Get buku by id",
+                "summary": "Get buku",
+                "tags": ["Bukus"],
+                "operationId": "getBuku",
                 "parameters": [
                     {
                         "name": "buku",
@@ -154,28 +329,380 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A single buku",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "description": "The ID of the buku"
-                                        },
-                                        "title": {
-                                            "type": "string",
-                                            "description": "The title of the buku"
-                                        },
-                                        "author": {
-                                            "type": "string",
-                                            "description": "The author of the buku"
-                                        }
-                                    }
+                        "description": "Buku found"
+                    },
+                    "404": {
+                        "description": "Buku not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update buku",
+                "tags": ["Bukus"],
+                "operationId": "updateBuku",
+                "parameters": [
+                    {
+                        "name": "buku",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "buku",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Buku"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Buku updated"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete buku",
+                "tags": ["Bukus"],
+                "operationId": "deleteBuku",
+                "parameters": [
+                    {
+                        "name": "buku",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Buku deleted"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/bukus/{id}/kategori": {
+            "get": {
+                "summary": "Get buku kategori",
+                "tags": ["Bukus"],
+                "operationId": "getBukuKategori",
+                "parameters": [
+                    {
+                        "name": "buku",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Buku found"
+                    },
+                    "404": {
+                        "description": "Buku not found"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/kategoris": {
+            "get": {
+                "summary": "Get kategoris",
+                "tags": ["Kategoris"],
+                "operationId": "getKategoris",
+                "responses": {
+                    "200": {
+                        "description": "Kategoris found"
+                    },
+                    "404": {
+                        "description": "Kategoris not found"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create kategori",
+                "tags": ["Kategoris"],
+                "operationId": "createKategori",
+                "parameters": [
+                    {
+                        "name": "kategoris",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Kategori"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Kategori created"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/kategoris/{id}": {
+            "get": {
+                "summary": "Get kategori",
+                "tags": ["Kategoris"],
+                "operationId": "getKategori",
+                "parameters": [
+                    {
+                        "name": "kategoris",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori found"
+                    },
+                    "404": {
+                        "description": "Kategori not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update kategori",
+                "tags": ["Kategoris"],
+                "operationId": "updateKategori",
+                "parameters": [
+                    {
+                        "name": "kategoris",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "kategoris",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Kategori"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori updated"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete kategori",
+                "tags": ["Kategoris"],
+                "operationId": "deleteKategori",
+                "parameters": [
+                    {
+                        "name": "kategoris",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori deleted"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/kategoris/{id}/bukus": {
+            "get": {
+                "summary": "Get bukus by kategori",
+                "tags": ["Kategoris"],
+                "operationId": "getBukusByKategori",
+                "parameters": [
+                    {
+                        "name": "kategoris",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Bukus found"
+                    },
+                    "404": {
+                        "description": "Bukus not found"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/pinjamans": {
+            "get": {
+                "summary": "Get pinjamans",
+                "tags": ["Pinjamans"],
+                "operationId": "getPinjamans",
+                "responses": {
+                    "200": {
+                        "description": "Pinjamans found"
+                    },
+                    "404": {
+                        "description": "Pinjamans not found"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create pinjaman",
+                "tags": ["Pinjamans"],
+                "operationId": "createPinjaman",
+                "parameters": [
+                    {
+                        "name": "pinjaman",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "buku_id": {
+                                    "type": "integer"
+                                },
+                                "user_id": {
+                                    "type": "integer"
+                                },
+                                "alamat": {
+                                    "type": "string"
+                                },
+                                "nama_lengkap": {
+                                    "type": "string"
+                                },
+                                "keterangan": {
+                                    "type": "string"
+                                },
+                                "tanggal_peminjamanm": {
+                                    "type": "string"
+                                },
+                                "durasi_peminjaman": {
+                                    "type": "integer"
                                 }
                             }
                         }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Pinjaman created"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/pinjamans/me": {
+            "get": {
+                "summary": "Get my pinjamans",
+                "tags": ["Pinjamans"],
+                "operationId": "getMyPinjamans",
+                "responses": {
+                    "200": {
+                        "description": "Pinjamans found"
+                    },
+                    "404": {
+                        "description": "Pinjamans not found"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/pinjamans/{id}": {
+            "get": {
+                "summary": "Get pinjaman",
+                "tags": ["Pinjamans"],
+                "operationId": "getPinjaman",
+                "parameters": [
+                    {
+                        "name": "pinjaman",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pinjaman found"
+                    },
+                    "404": {
+                        "description": "Pinjaman not found"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/pinjamans/{id}/setujui": {
+            "post": {
+                "summary": "Setujui pinjaman",
+                "tags": ["Pinjamans"],
+                "operationId": "setujuiPinjaman",
+                "parameters": [
+                    {
+                        "name": "pinjaman",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pinjaman disetujui"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/pinjamans/{id}/tolak": {
+            "post": {
+                "summary": "Tolak pinjaman",
+                "tags": ["Pinjamans"],
+                "operationId": "tolakPinjaman",
+                "parameters": [
+                    {
+                        "name": "pinjaman",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pinjaman ditolak"
+                    }
+                }
+            }
+        },
+        "/api/pertemuan4/pinjamans/{id}/kembalikan": {
+            "post": {
+                "summary": "Kembalikan pinjaman",
+                "tags": ["Pinjamans"],
+                "operationId": "kembalikanPinjaman",
+                "parameters": [
+                    {
+                        "name": "pinjaman",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pinjaman dikembalikan"
                     }
                 }
             }
@@ -187,6 +714,150 @@
                 "type": "http",
                 "scheme": "bearer",
                 "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string",
+                        "format": "password"
+                    }
+                },
+                "required": ["name", "email", "password"]
+            },
+            "Buku": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "judul": {
+                        "type": "string"
+                    },
+                    "penulis": {
+                        "type": "string"
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "penerbit": {
+                        "type": "string"
+                    },
+                    "tahun_terbit": {
+                        "type": "integer"
+                    },
+                    "jumlah_halaman": {
+                        "type": "integer"
+                    },
+                    "isbn": {
+                        "type": "string"
+                    },
+                    "kategori": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Kategori"
+                        }
+                    },
+                    "deskripsi": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Kategori": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nama": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Pinjaman": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "ID of the loan"
+                    },
+                    "buku": {
+                        "$ref": "#/components/schemas/Buku"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "status_persetujuan": {
+                        "type": "string",
+                        "description": "Approval status of the loan"
+                    },
+                    "status_pengembalian": {
+                        "type": "string",
+                        "description": "Return status of the loan"
+                    },
+                    "alamat": {
+                        "type": "string",
+                        "description": "Address related to the loan"
+                    },
+                    "keterangan": {
+                        "type": "string",
+                        "description": "Additional remarks about the loan"
+                    },
+                    "durasi_peminjaman": {
+                        "type": "integer",
+                        "description": "Duration of the loan in days"
+                    },
+                    "tanggal": {
+                        "type": "object",
+                        "properties": {
+                            "pengembalian": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "Date the book is expected to be returned"
+                            },
+                            "peminjaman": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "Date the book was borrowed"
+                            },
+                            "disetujui": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "Date the loan was approved"
+                            },
+                            "dikembalikan": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "Date the book was actually returned"
+                            }
+                        },
+                        "description": "Dates related to the loan transaction"
+                    }
+                },
+                "required": [
+                    "id",
+                    "buku",
+                    "user",
+                    "status_persetujuan",
+                    "status_pengembalian",
+                    "alamat",
+                    "keterangan",
+                    "durasi_peminjaman",
+                    "tanggal"
+                ]
             }
         }
     },

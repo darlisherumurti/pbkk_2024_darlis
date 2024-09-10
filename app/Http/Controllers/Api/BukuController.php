@@ -21,16 +21,32 @@ class BukuController
         ]);
     } 
 
-    public function single(Buku $buku)
+    public function single($id)
     {
-        $buku = new BukuResource($buku);
-        return $buku->additional([
+        $buku = Buku::with('kategoris')->find($id);
+
+        if(!$buku) {
+            return response()->json([
+                'message' => 'buku not found',
+            ])
+            ->setStatusCode(404);
+        }
+        return (new BukuResource($buku))->additional([
             'message' => 'success',
         ]);
     }
 
-    public function kategori(Buku $buku)
+    public function kategori($id)
     {
+        $buku = Buku::find($id);
+
+        if(!$buku) {
+            return response()->json([
+                'message' => 'buku not found',
+            ])
+            ->setStatusCode(404);
+        }
+
         $response = KategoriResource::collection($buku->kategoris);
         return $response->additional([
             'message' => 'success',
@@ -48,10 +64,17 @@ class BukuController
         ]);
     }
 
-    public function update(UpdateBukuRequest $request, Buku $buku)
+    public function update(UpdateBukuRequest $request,  $id)
     {
         $validated = $request->validated();
         unset($validated['kategoris']);
+        $buku = Buku::find($id);
+        if(!$buku) {
+            return response()->json([
+                'message' => 'buku not found',
+            ])
+            ->setStatusCode(404);
+        }
         $buku->update($validated);
         $buku->kategoris()->sync($request->input('kategoris'));
         return (new BukuResource($buku))->additional([
@@ -59,8 +82,15 @@ class BukuController
         ]);
     }
 
-    public function destroy(Buku $buku)
+    public function destroy($id)
     {
+        $buku = Buku::find($id);
+        if(!$buku) {
+            return response()->json([
+                'message' => 'buku not found',
+            ])
+            ->setStatusCode(404);
+        }
         $buku->delete();
         return response()->json([
             'message' => 'success',

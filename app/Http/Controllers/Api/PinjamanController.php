@@ -29,8 +29,16 @@ class PinjamanController
         ]);
     }
 
-    public function single(Pinjaman $pinjaman)
+
+    public function single($id)
     {
+        $pinjaman = Pinjaman::find($id);
+        if(!$pinjaman) {
+            return response()->json([
+                'message' => 'pinjaman not found',
+            ])
+            ->setStatusCode(404);
+        }
         return (new PinjamanResource($pinjaman))->additional([
             'message' => 'success',
         ]);
@@ -44,24 +52,45 @@ class PinjamanController
         ]);
     }
 
-    public function setujui(Pinjaman $pinjaman)
+    public function setujui($id)
     {
+        $pinjaman = Pinjaman::find($id);
+        if(!$pinjaman) {
+            return response()->json([
+                'message' => 'pinjaman not found',
+            ])
+            ->setStatusCode(404);
+        }
         $pinjaman = PinjamanServiceFacade::setujuiPinjaman($pinjaman);
         return (new PinjamanResource($pinjaman))->additional([
             'message' => 'success',
         ]);
     }
 
-    public function tolak(Pinjaman $pinjaman)
+    public function tolak($id)
     {
+        $pinjaman = Pinjaman::find($id);
+        if(!$pinjaman) {
+            return response()->json([
+                'message' => 'pinjaman not found',
+            ])
+            ->setStatusCode(404);
+        }
         $pinjaman = PinjamanServiceFacade::tolakPinjaman($pinjaman);
         return (new PinjamanResource($pinjaman))->additional([
             'message' => 'success',
         ]);
     }
 
-    public function kembalikan(Pinjaman $pinjaman)
+    public function kembalikan($id)
     {   
+        $pinjaman = Pinjaman::find($id);
+        if(!$pinjaman) {
+            return response()->json([
+                'message' => 'pinjaman not found',
+            ])
+            ->setStatusCode(404);
+        }
         $pinjaman = PinjamanServiceFacade::kembalikanPinjaman($pinjaman);
         return (new PinjamanResource($pinjaman))->additional([
             'message' => 'success',

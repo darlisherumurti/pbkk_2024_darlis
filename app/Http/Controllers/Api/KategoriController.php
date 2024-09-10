@@ -18,13 +18,27 @@ class KategoriController
         return $kategoris;
     }
 
-    public function single(Kategori $kategori)
-    {
+    public function single($id)
+    {   
+        $kategori = Kategori::find($id);
+        if(!$kategori) {
+            return response()->json([
+                'message' => 'kategori not found',
+            ])
+            ->setStatusCode(404);
+        }
         return new KategoriResource($kategori);
     }
 
-    public function buku(Kategori $kategori)
+    public function buku($id)
     {
+        $kategori = Kategori::find($id);
+        if(!$kategori) {
+            return response()->json([
+                'message' => 'kategori not found',
+            ])
+            ->setStatusCode(404);
+        }
         return BukuResource::collection($kategori->bukus);
     }
 
@@ -36,16 +50,30 @@ class KategoriController
         ]);
     }
 
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, $id)
     {
+        $kategori = Kategori::find($id);
+        if(!$kategori) {
+            return response()->json([
+                'message' => 'kategori not found',
+            ])
+            ->setStatusCode(404);
+        }
         $kategori = KategoriServiceFacade::updateKategori($request, $kategori);
         return (new KategoriResource($kategori))->additional([
             'message' => 'success',
         ]);
     }
 
-    public function delete(Kategori $kategori)
+    public function delete($id)
     {
+        $kategori = Kategori::find($id);
+        if(!$kategori) {
+            return response()->json([
+                'message' => 'kategori not found',
+            ])
+            ->setStatusCode(404);
+        }
         $deleted = KategoriServiceFacade::deleteKategori($kategori);
         return response()->json([
             'message' => $deleted ? 'success' : 'failed',

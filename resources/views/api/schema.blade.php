@@ -1,9 +1,9 @@
-@extends('layout.base')
+@extends('layout.base-without-header')
 @push('styles')
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.10.3/swagger-ui.css" />
 @endpush
 @section('content')
-<div class="card">
+<div class="card mt-3">
 
     <div id="swagger-ui"></div>
 </div>
@@ -23,7 +23,7 @@
                 layout: "StandaloneLayout",
                 onComplete: () => {
                     // Set default token here
-                    const defaultToken = "16|KHiboeKV3NVovVV70ZbgwCOsf2MiNu1uztSXaUPX16c17a02";
+                    const defaultToken = "17|cUedemTG0l3QK1A8ORPgRChyteLEp0J983bPOWRK494a5e49";
                     ui.preauthorizeApiKey("BearerAuth", defaultToken);
                 }
             });

@@ -21,34 +21,36 @@ Route::prefix('/pertemuan4')->middleware('throttle:60,1')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::prefix('/bukus')->group(function () {
             Route::get('/', [BukuController::class, 'index']);
-            Route::get('/{buku}', [BukuController::class, 'single']);
-            Route::get('/{buku}/kategori', [BukuController::class, 'kategori']);
+            Route::get('/{id}', [BukuController::class, 'single']);
+            Route::get('/{id}/kategori', [BukuController::class, 'kategori']);
             Route::middleware(['role:admin|petugas'])->group(function () {
-                Route::post('/{buku}', [BukuController::class, 'store']);
-                Route::put('/{buku}', [BukuController::class, 'update']);
-                Route::delete('/{buku}', [BukuController::class, 'destroy']);
+                Route::post('/{id}', [BukuController::class, 'store']);
+                Route::put('/{id}', [BukuController::class, 'update']);
+                Route::delete('/{id}', [BukuController::class, 'destroy']);
             });
         });
         Route::prefix('/kategoris')->group(function () {
             Route::get('/', [KategoriController::class, 'index']);
-            Route::get('/{kategori}/bukus', [KategoriController::class, 'buku']);
-            Route::get('/{kategori}', [KategoriController::class, 'single']);
+            Route::get('/{id}/bukus', [KategoriController::class, 'buku']);
+            Route::get('/{id}', [KategoriController::class, 'single']);
             Route::middleware(['role:admin'])->group(function () {                
-                Route::post('/{kategori}', [KategoriController::class, 'store']);
-                Route::put('/{kategori}', [KategoriController::class, 'update']);
-                Route::delete('/{kategori}', [KategoriController::class, 'destroy']);
+                Route::post('/{id}', [KategoriController::class, 'store']);
+                Route::put('/{id}', [KategoriController::class, 'update']);
+                Route::delete('/{id}', [KategoriController::class, 'destroy']);
             });
         });
+        Route::get('/pinjamans/me', [PinjamanController::class, 'me']);
         Route::middleware(['role:admin|petugas'])->prefix('/pinjamans')->group(function () {
             Route::get('/', [PinjamanController::class, 'index']);
-            Route::get('/{pinjaman}', [PinjamanController::class, 'single']);
+            Route::get('/{id}', [PinjamanController::class, 'single']);
             Route::post('/', [PinjamanController::class, 'store']);
-            Route::post('/{pinjaman}/setujui', [PinjamanController::class, 'setujui']);
-            Route::post('/{pinjaman}/tolak', [PinjamanController::class, 'tolak']);
-            Route::post('/{pinjaman}/kembalikan', [PinjamanController::class, 'kembalikan']);
-            Route::put('/{pinjaman}', [PinjamanController::class, 'update']);
-            Route::delete('/{pinjaman}', [PinjamanController::class, 'destroy']);
+            Route::post('/{id}/setujui', [PinjamanController::class, 'setujui']);
+            Route::post('/{id}/tolak', [PinjamanController::class, 'tolak']);
+            Route::post('/{id}/kembalikan', [PinjamanController::class, 'kembalikan']);
         });
     });
 });
 
+Route::fallback(function () {
+    return response()->json(['message' => 'Not Found'], 404);
+});
