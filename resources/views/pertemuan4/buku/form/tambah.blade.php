@@ -206,25 +206,6 @@
             previewImage();
         }
 
-        document.getElementById('bukuForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you want to submit this form?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, submit it!',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // If confirmed, submit the form
-                    this.submit();
-                }
-            });
-        });
-
         $('#bukuForm').on('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
 

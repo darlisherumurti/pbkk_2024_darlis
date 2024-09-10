@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Facades\KategoriServiceFacade as KategoriService;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class KategoriController
 {
@@ -59,7 +60,7 @@ class KategoriController
      */
     public function update(Request $request, Kategori $kategori)
     {
-        $kategori = KategoriService::updateKategori($request, $kategori);
+        KategoriService::updateKategori($request, $kategori);
         return redirect()->back()->with('success', 'Kategori "' . $kategori->nama . '" sukses diupdate".');
     }
 

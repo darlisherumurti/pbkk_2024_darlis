@@ -43,7 +43,7 @@
                 <tr>
                     <th>Status Persetujuan</th>
                     <td>
-                        @include('pertemuan4.pinjaman.table.persetujuan', [
+                        @include('pertemuan4.pinjaman.table.status_persetujuan', [
                             'status' => $data['pinjaman']->status_persetujuan,
                         ])
                     </td>
@@ -51,7 +51,7 @@
                 <tr>
                     <th>Status Pengembalian</th>
                     <td>
-                        @include('pertemuan4.pinjaman.table.pengembalian', [
+                        @include('pertemuan4.pinjaman.table.status_pengembalian', [
                             'status' => $data['pinjaman']->status_pengembalian,
                         ])
                     </td>

@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('sidebar')
-    <x-menu-tree title="Pertemuan 3" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan4/*')">
+    <x-menu-tree title="Pertemuan 4" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan4/*')">
         @guest
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('login')" :active="request()->is('pertemuan4/login')">Login</x-menu-item>
             <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan4/login')">Register</x-menu-item>
@@ -27,6 +27,9 @@
                 See Kategori
             </x-menu-item>
             @role('admin|petugas')
+                <x-menu-item icon="fas fa-plus" :href="route('kategori.create')" :active="request()->is('pertemuan4/kategori/create')">
+                    Tambah Kategori
+                </x-menu-item>
                 <x-menu-item icon="fas fa-sign-in-alt" :href="route('kategori.list')" :active="request()->is('pertemuan4/kategori/list')">
                     Manage Kategori
                 </x-menu-item>
@@ -61,10 +64,13 @@
             </x-menu-tree>
         @endrole
     </x-menu-tree>
+    <x-menu-item icon="fas fa-table" :href="route('api.schema')" :active="request()->is('api/schema')">
+        API Schema
+    </x-menu-item>
 @endsection
 
 @push('scripts')
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     @if (session('success'))
         <script>
             Swal.fire({
@@ -73,6 +79,13 @@
                 text: '{{ session('success') }}',
             })
         </script>
+    @elseif (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            })
+        </script>
     @endif
-
 @endpush

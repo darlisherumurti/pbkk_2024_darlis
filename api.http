@@ -1,3 +1,15 @@
+POST http://127.0.0.1:8000/api/pertemuan4/register HTTP/1.1
+content-type: application/json
+Accept: application/json
+
+{
+    "name": "Kekeke",
+    "email": "lele@aaad.com",
+    "password": "lelelele"
+}
+
+
+###
 POST http://127.0.0.1:8000/api/pertemuan4/login HTTP/1.1
 content-type: application/json
 Accept: application/json

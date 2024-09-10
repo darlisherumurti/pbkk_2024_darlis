@@ -101,7 +101,6 @@
                             cancelButtonText: 'Cancel'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                // Submit the form
                                 form.submit();
                             }
                         });

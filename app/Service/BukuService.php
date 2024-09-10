@@ -46,10 +46,10 @@ class BukuService
         return $buku;
     }
 
-    public function updateBuku(UpdateBukuRequest $request){
+    public function updateBuku(UpdateBukuRequest $request, Buku $buku){
         $validatedData = $request->validated();
         unset($validatedData['kategori']);
-        $buku = Buku::find($request->input('id'))->update($validatedData);
+        $buku->update($validatedData);
         $buku->kategoris()->sync($request->input('kategori'));
         return $buku;
     }

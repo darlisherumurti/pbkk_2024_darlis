@@ -30,7 +30,7 @@ class KategoriService
 
     public function updateKategori(Request $request, Kategori $kategori){
         $validated = $request->validate([
-            'nama' => ['required', 'string', 'max:255', 'unique:kategori,nama,' . $request->input('id')],
+            'nama' => ['required', 'string', 'max:255', 'unique:kategori,nama,' . $kategori->id],
         ]);
         return $kategori->update($validated);
     }

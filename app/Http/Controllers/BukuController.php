@@ -75,9 +75,10 @@ class BukuController
      */
     public function destroy(Buku $buku)
     {
+        $judul = $buku->judul;
         $buku->kategoris()->detach();
         $buku->delete();
-        return redirect()->route('buku.list')->with('success', 'Buku "' . $buku->judul . '" sukses dihapus".');
+        return redirect()->route('buku.list')->with('success', 'Buku "' . $judul . '" sukses dihapus".');
     }
     
     public function list(Request $request)

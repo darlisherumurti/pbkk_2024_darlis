@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +15,7 @@ class RegisterController
         $validated = $this->validator($request->all())->validate();
         $user = $this->create($validated);
         $token = $user->createToken('api-token');
-        return ($user)->additional([
+        return (new UserResource($user))->additional([
             'token' => $token->plainTextToken
         ]);
     }
@@ -35,7 +36,7 @@ class RegisterController
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
         ]);
     }
 }
