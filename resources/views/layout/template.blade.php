@@ -8,7 +8,7 @@
     <title>Kuliah PBKK Kelas B 2024</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf_token" content="{!! csrf_token() !!}" /> 
     {{-- Tambahkan "/" diawal, artinya dari directory public --}}
 
     {{-- Css Aplikasi --}}
@@ -31,12 +31,24 @@
     <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.css">
+    {{-- lightbox2 --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    {{-- Font awesome 6 --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    @if (@isset($page))
+        @vite('resources/js/app.ts')
+        {{-- ziggy helper --}}
+        @routes
+        @inertiaHead
+    @endif
     @stack('styles')
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -73,6 +85,9 @@
             <div class="container-fluid">
                 @yield('alert')
                 @yield('content')
+                @if (@isset($page))
+                    @inertia
+                @endif
             </div>
 
             <!-- /.content -->
@@ -119,6 +134,8 @@
     <script src="/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    {{-- lightbox2 --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

@@ -10,7 +10,7 @@
         }
     ],
     "paths": {
-        "/api/pertemuan4/register": {
+        "/api/pertemuan5/register": {
             "post": {
                 "tags": ["Auth"],
                 "summary": "Register a new user",
@@ -50,7 +50,7 @@
                 }
             }
         },
-        "/api/pertemuan4/login": {
+        "/api/pertemuan5/login": {
             "post": {
                 "summary": "User Login",
                 "security": [],
@@ -105,7 +105,7 @@
                 }
             }
         },
-        "/api/pertemuan4/logout": {
+        "/api/pertemuan5/logout": {
             "post": {
                 "summary": "User Logout",
                 "tags": ["Auth"],
@@ -117,7 +117,7 @@
                 }
             }
         },
-        "/api/pertemuan4/bukus": {
+        "/api/pertemuan5/bukus": {
             "get": {
                 "summary": "Get bukus",
                 "tags": ["Bukus"],
@@ -312,7 +312,7 @@
                 }
             }
         },
-        "/api/pertemuan4/bukus/{id}": {
+        "/api/pertemuan5/bukus/{id}": {
             "get": {
                 "summary": "Get buku",
                 "tags": ["Bukus"],
@@ -385,7 +385,7 @@
                 }
             }
         },
-        "/api/pertemuan4/bukus/{id}/kategori": {
+        "/api/pertemuan5/bukus/{id}/kategori": {
             "get": {
                 "summary": "Get buku kategori",
                 "tags": ["Bukus"],
@@ -410,7 +410,7 @@
                 }
             }
         },
-        "/api/pertemuan4/kategoris": {
+        "/api/pertemuan5/kategoris": {
             "get": {
                 "summary": "Get kategoris",
                 "tags": ["Kategoris"],
@@ -445,7 +445,7 @@
                 }
             }
         },
-        "/api/pertemuan4/kategoris/{id}": {
+        "/api/pertemuan5/kategoris/{id}": {
             "get": {
                 "summary": "Get kategori",
                 "tags": ["Kategoris"],
@@ -518,7 +518,7 @@
                 }
             }
         },
-        "/api/pertemuan4/kategoris/{id}/bukus": {
+        "/api/pertemuan5/kategoris/{id}/bukus": {
             "get": {
                 "summary": "Get bukus by kategori",
                 "tags": ["Kategoris"],
@@ -543,7 +543,7 @@
                 }
             }
         },
-        "/api/pertemuan4/pinjamans": {
+        "/api/pertemuan5/pinjamans": {
             "get": {
                 "summary": "Get pinjamans",
                 "tags": ["Pinjamans"],
@@ -601,7 +601,7 @@
                 }
             }
         },
-        "/api/pertemuan4/pinjamans/me": {
+        "/api/pertemuan5/pinjamans/me": {
             "get": {
                 "summary": "Get my pinjamans",
                 "tags": ["Pinjamans"],
@@ -616,7 +616,7 @@
                 }
             }
         },
-        "/api/pertemuan4/pinjamans/{id}": {
+        "/api/pertemuan5/pinjamans/{id}": {
             "get": {
                 "summary": "Get pinjaman",
                 "tags": ["Pinjamans"],
@@ -641,7 +641,7 @@
                 }
             }
         },
-        "/api/pertemuan4/pinjamans/{id}/setujui": {
+        "/api/pertemuan5/pinjamans/{id}/setujui": {
             "post": {
                 "summary": "Setujui pinjaman",
                 "tags": ["Pinjamans"],
@@ -663,7 +663,7 @@
                 }
             }
         },
-        "/api/pertemuan4/pinjamans/{id}/tolak": {
+        "/api/pertemuan5/pinjamans/{id}/tolak": {
             "post": {
                 "summary": "Tolak pinjaman",
                 "tags": ["Pinjamans"],
@@ -685,7 +685,7 @@
                 }
             }
         },
-        "/api/pertemuan4/pinjamans/{id}/kembalikan": {
+        "/api/pertemuan5/pinjamans/{id}/kembalikan": {
             "post": {
                 "summary": "Kembalikan pinjaman",
                 "tags": ["Pinjamans"],

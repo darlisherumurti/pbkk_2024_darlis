@@ -2,6 +2,7 @@
 
 namespace App\Facades;
 
+use App\Service\PinjamanService;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -11,6 +12,7 @@ class PinjamanServiceFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'pinjaman-service'; // This should match the binding name
+        return PinjamanService::class; // This should match the binding name
+        // return 'pinjaman-service'; // This should match the binding name
     }
 }

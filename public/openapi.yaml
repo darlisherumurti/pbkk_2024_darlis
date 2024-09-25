@@ -5,7 +5,7 @@ info:
 servers:
   - url: http://127.0.0.1:8000
 paths:
-  /api/pertemuan4/bukus:
+  /api/pertemuan5/bukus:
     get:
       summary: Get bukus
       responses:
@@ -13,7 +13,7 @@ paths:
           description: A list of bukus
           content:
             application/json:
-  /api/pertemuan4/bukus/{buku}:
+  /api/pertemuan5/bukus/{buku}:
     get:
       summary: Get buku by id
       responses:

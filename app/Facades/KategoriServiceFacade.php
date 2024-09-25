@@ -2,6 +2,7 @@
 
 namespace App\Facades;
 
+use App\Service\KategoriService;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -11,6 +12,6 @@ class KategoriServiceFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'kategori-service'; // This should match the binding name
+        return KategoriService::class; // This should match the binding name
     }
 }

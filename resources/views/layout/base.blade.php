@@ -1,69 +1,82 @@
 @extends('layout.template')
-
+@if (@isset($page['props']['title']))
+    @section('title', $page['props']['title'] ?? 'Pertemuan 5')
+@endif
 @section('sidebar')
-    <x-menu-tree title="Pertemuan 4" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan4/*')">
-        @guest
-            <x-menu-item icon="fas fa-sign-in-alt" :href="route('login')" :active="request()->is('pertemuan4/login')">Login</x-menu-item>
-            <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan4/login')">Register</x-menu-item>
-        @endguest
-        <x-menu-item icon="fas fa-home" :href="route('home')" :active="request()->is('pertemuan4/home')">Home</x-menu-item>
-        <x-menu-tree title="Buku" icon="fas fa-book" :active="request()->is('pertemuan4/buku*')">
-            <x-menu-item icon="fas fa-sign-in-alt" :href="route('buku.index')" :active="request()->is('pertemuan4/buku')">
-                Explore Buku
-            </x-menu-item>
-            @role('admin')
-                <x-menu-item icon="fas fa-plus" :href="route('buku.create')" :active="request()->is('pertemuan4/buku/create')">
-                    Tambah Buku
+    <x-menu-tree title="Pertemuan 5" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan5/*')">
+        <x-menu-tree title="Perpustakaan" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan5/perpustakaan*')">
+            @guest
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('login')" :active="request()->is('pertemuan5/perpustakaan/login')">Login</x-menu-item>
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan5/perpustakaan/login')">Register</x-menu-item>
+            @endguest
+            <x-menu-item icon="fas fa-home" :href="route('home')" :active="request()->is('pertemuan5/perpustakaan/home')">Home</x-menu-item>
+            <x-menu-tree title="Buku" icon="fas fa-book" :active="request()->is('pertemuan5/perpustakaan/buku*')">
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('buku.index')" :active="request()->is('pertemuan5/perpustakaan/buku')">
+                    Explore Buku
                 </x-menu-item>
-            @endrole
-            @role('petugas|admin')
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('buku.list')" :active="request()->is('pertemuan4/buku/list')">
-                    Manage Buku
-                </x-menu-item>
-            @endrole
-        </x-menu-tree>
-        <x-menu-tree title="Kategori" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan4/kategori*')">
-            <x-menu-item icon="fas fa-sign-in-alt" :href="route('kategori.index')" :active="request()->is('pertemuan4/kategori')">
-                See Kategori
-            </x-menu-item>
-            @role('admin|petugas')
-                <x-menu-item icon="fas fa-plus" :href="route('kategori.create')" :active="request()->is('pertemuan4/kategori/create')">
-                    Tambah Kategori
-                </x-menu-item>
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('kategori.list')" :active="request()->is('pertemuan4/kategori/list')">
-                    Manage Kategori
-                </x-menu-item>
-            @endrole
-        </x-menu-tree>
-        @auth
-            <x-menu-tree title="Pinjaman" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan4/pinjaman*')">
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.me')" :active="request()->is('pertemuan4/pinjaman/me')">
-                    Pinjaman saya
-                </x-menu-item>
-                @role('admin|petugas')
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.persetujuan')" :active="request()->is('pertemuan4/pinjaman/persetujuan')">
-                        Manage Persetujuan
+                @role('admin')
+                    <x-menu-item icon="fas fa-plus" :href="route('buku.create')" :active="request()->is('pertemuan5/perpustakaan/buku/create')">
+                        Tambah Buku
                     </x-menu-item>
-                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.pengembalian')" :active="request()->is('pertemuan4/pinjaman/pengembalian')">
-                        Manage Pengembalian
+                @endrole
+                @role('petugas|admin')
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('buku.list')" :active="request()->is('pertemuan5/perpustakaan/buku/list')">
+                        Manage Buku
                     </x-menu-item>
                 @endrole
             </x-menu-tree>
-            @role('admin|petugas')
-            @endrole
-        @endauth
-        @role('admin')
-            <x-menu-tree title="Users" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan4/articles*')">
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan4/login')">
-                    List Users
+            <x-menu-tree title="Kategori" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan5/perpustakaan/kategori*')">
+                <x-menu-item icon="fas fa-sign-in-alt" :href="route('kategori.index')" :active="request()->is('pertemuan5/perpustakaan/kategori')">
+                    See Kategori
                 </x-menu-item>
-                <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan4/login')">
-                    Manage Users
-                </x-menu-item>
-
+                @role('admin|petugas')
+                    <x-menu-item icon="fas fa-plus" :href="route('kategori.create')" :active="request()->is('pertemuan5/perpustakaan/kategori/create')">
+                        Tambah Kategori
+                    </x-menu-item>
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('kategori.list')" :active="request()->is('pertemuan5/perpustakaan/kategori/list')">
+                        Manage Kategori
+                    </x-menu-item>
+                @endrole
             </x-menu-tree>
-        @endrole
+            @auth
+                <x-menu-tree title="Pinjaman" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan5/perpustakaan/pinjaman*')">
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.me')" :active="request()->is('pertemuan5/perpustakaan/pinjaman/me')">
+                        Pinjaman saya
+                    </x-menu-item>
+                    @role('admin|petugas')
+                        <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.persetujuan')" :active="request()->is('pertemuan5/perpustakaan/pinjaman/persetujuan')">
+                            Manage Persetujuan
+                        </x-menu-item>
+                        <x-menu-item icon="fas fa-sign-in-alt" :href="route('pinjaman.pengembalian')" :active="request()->is('pertemuan5/perpustakaan/pinjaman/pengembalian')">
+                            Manage Pengembalian
+                        </x-menu-item>
+                    @endrole
+                </x-menu-tree>
+                @role('admin|petugas')
+                @endrole
+            @endauth
+            @role('admin')
+                <x-menu-tree title="Users" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan5/perpustakaan/articles*')">
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan5/perpustakaan/login')">
+                        List Users
+                    </x-menu-item>
+                    <x-menu-item icon="fas fa-sign-in-alt" :href="route('register.show')" :active="request()->is('pertemuan5/perpustakaan/login')">
+                        Manage Users
+                    </x-menu-item>
+
+                </x-menu-tree>
+            @endrole
+        </x-menu-tree>
+        <x-menu-tree title="Vue" icon="fa-brands fa-vuejs" :active="request()->is('pertemuan5/vue*')">
+            <x-menu-item icon="fas fa-home" :href="route('vue.home')" :active="request()->is('pertemuan5/vue')">Home</x-menu-item>
+            <x-menu-item icon="fas fa-book" :href="route('vue.buku')" :active="request()->is('pertemuan5/vue/buku')">Buku</x-menu-item>
+            <x-menu-tree title="Media" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan5/vue/media*')">
+                <x-menu-item icon="fas fa-home" :href="route('media.index')" :active="request()->is('pertemuan5/vue/media')">Index</x-menu-item>
+                <x-menu-item icon="fas fa-upload" :href="route('media.create')" :active="request()->is('pertemuan5/vue/media/create')">Create</x-menu-item>
+            </x-menu-tree>
+        </x-menu-tree>
     </x-menu-tree>
+
     <x-menu-item icon="fas fa-table" :href="route('api.schema')" :active="request()->is('api/schema')">
         API Schema
     </x-menu-item>

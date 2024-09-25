@@ -14,7 +14,7 @@ class HandleInertiaRequests extends Middleware
      *
      * @var string
      */
-    protected $rootView = 'layout-vue.base';
+    protected $rootView = 'layout.base';
 
     /**
      * Determines the current asset version.
