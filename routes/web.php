@@ -3,14 +3,15 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\InertiaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PinjamanController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/','/pertemuan4/home' );
+Route::redirect('/','/pertemuan5/home' );
 
-Route::prefix('/pertemuan4')->group(function(){
-    Route::view('/home','pertemuan4.home')->name('home');
+Route::prefix('/pertemuan5')->group(function(){
+    // Route::view('/home','pertemuan4.home')->name('home');
     
     Route::middleware(['auth'])->group(function(){
 
@@ -66,5 +67,8 @@ Route::prefix('/pertemuan4')->group(function(){
     Route::get('/pinjaman/{pinjaman}', [PinjamanController::class,'show'])->name('pinjaman.show');
 });
 
+Route::prefix('/pertemuan5')->group(function(){
+    Route::get('/home',[InertiaController::class,'index'])->name('home');
+});
 Route::view('/api/schema','api.schema')->name('api.schema');
 // Route::fallback(fn() => redirect('/pertemuan4/home')->with('error', 'Halaman Tidak Ditemukan'));

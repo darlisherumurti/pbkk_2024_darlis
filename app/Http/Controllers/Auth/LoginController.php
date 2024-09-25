@@ -11,7 +11,7 @@ class LoginController
         if (Auth::check()) {
             return redirect()->intended();
         }else{
-            return view('pertemuan4.auth.login');
+            return view('pertemuan5.auth.login');
         }    
     }
 

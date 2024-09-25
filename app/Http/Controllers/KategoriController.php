@@ -17,7 +17,7 @@ class KategoriController
     {
         $data['kategori'] = KategoriService::getKategoris($request);
         $data['kategori']->appends($request->query());
-        return view('pertemuan4.kategori.index', compact('data'));
+        return view('pertemuan5.kategori.index', compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class KategoriController
      */
     public function create(Request $request)
     {
-        return view('pertemuan4.kategori.create');
+        return view('pertemuan5.kategori.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class KategoriController
     public function show(Kategori $kategori)
     {
         $data['kategori'] = $kategori;
-        return view('pertemuan4.kategori.show', compact('data'));
+        return view('pertemuan5.kategori.show', compact('data'));
     }
 
     /**
@@ -52,7 +52,7 @@ class KategoriController
     public function edit(Kategori $kategori)
     {
         $data['kategori'] = $kategori;
-        return view('pertemuan4.kategori.edit', compact('data'));
+        return view('pertemuan5.kategori.edit', compact('data'));
     }
 
     /**
@@ -77,11 +77,11 @@ class KategoriController
         $queryString = $request->query();
         $data['kategori'] = KategoriService::getKategorisWithBukus($request);
         $data['kategori']->appends($queryString);
-        return view('pertemuan4.kategori.list', compact('data'));
+        return view('pertemuan5.kategori.list', compact('data'));
     }
 
     public function detail(Kategori $kategori){
         $data['kategori'] = $kategori;
-        return view('pertemuan4.kategori.detail', compact('data'));
+        return view('pertemuan5.kategori.detail', compact('data'));
     }
 }

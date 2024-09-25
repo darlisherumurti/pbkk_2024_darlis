@@ -19,14 +19,14 @@ class PinjamanController
     {
         $data['pinjaman'] = PinjamanService::getPinjamans($request);
         $data['pinjaman']->appends($request->query());
-        return view('pertemuan4.pinjaman.pengembalian', compact('data'));
+        return view('pertemuan5.pinjaman.pengembalian', compact('data'));
     }
 
     public function persetujuan_show(Request $request)
     {
         $data['pinjaman'] = PinjamanService::getPinjamans($request);
         $data['pinjaman']->appends($request->query());
-        return view('pertemuan4.pinjaman.persetujuan', compact('data'));
+        return view('pertemuan5.pinjaman.persetujuan', compact('data'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PinjamanController
     public function create(Buku $buku)
     {
         $data['buku'] = $buku;
-        return view('pertemuan4.pinjaman.create', compact('data'));
+        return view('pertemuan5.pinjaman.create', compact('data'));
     }
 
     /**
@@ -54,7 +54,7 @@ class PinjamanController
     {
         if(Gate::allows('view-pinjaman', $pinjaman)) {   
             $data['pinjaman'] = $pinjaman;
-            return view('pertemuan4.pinjaman.show', compact('data'));
+            return view('pertemuan5.pinjaman.show', compact('data'));
         } else {
             abort(403);
         }
@@ -66,7 +66,7 @@ class PinjamanController
         $data['pinjaman'] = PinjamanService::getUserPinjamans($request, $user);
         $data['pinjaman']->appends($request->query());
     
-        return view('pertemuan4.pinjaman.me', compact('data'));
+        return view('pertemuan5.pinjaman.me', compact('data'));
     }
 
     public function setujui(Pinjaman $pinjaman)
@@ -90,7 +90,7 @@ class PinjamanController
     public function detail(Pinjaman $pinjaman)
     {
         $data['pinjaman'] = $pinjaman;
-        return view('pertemuan4.pinjaman.detail', compact('data'));
+        return view('pertemuan5.pinjaman.detail', compact('data'));
     }
 
 }
