@@ -44,7 +44,7 @@
         @inertiaHead
     @endif
     @stack('styles')
-
+    
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

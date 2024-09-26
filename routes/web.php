@@ -73,6 +73,9 @@ Route::prefix('/pertemuan5')->group(function(){
         Route::get('/',[InertiaController::class,'index'])->name('vue.home');
         Route::get('/buku',[InertiaController::class,'buku'])->name('vue.buku');
 
+        Route::prefix('/tutorial')->group(function(){
+            Route::inertia('/directive','Tutorial/Directive')->name('vue.tutorial.directive');
+        });
         Route::resource('media', MediaController::class);
 
     });
