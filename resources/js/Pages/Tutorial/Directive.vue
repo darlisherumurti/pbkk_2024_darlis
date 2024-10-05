@@ -1,97 +1,174 @@
-<style lang="css" scoped src="../../../css/bootstrap.min.css"></style>
-
 <template>
     <div>
-        <BCard class="bg-neutral" no-body>
-            <BTabs card>
-                <BTab title="v-if" active>
-                    <div class="form-check form-switch">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            role="switch"
-                            id="flexSwitchCheckDefault"
-                            v-model="vif_value"
-                        />
-                        <label
-                            class="form-check-label"
-                            for="flexSwitchCheckDefault"
-                            >Toggle this switch element</label
+        <div class="card">
+            <div class="card-header">
+                <ul
+                    class="nav nav-tabs card-header-tabs"
+                    id="myTab"
+                    role="tablist"
+                >
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            id="home-tab"
+                            data-toggle="tab"
+                            href="#home"
+                            role="tab"
+                            aria-controls="home"
+                            aria-selected="true"
+                            >Conditional Rendering (v-if)</a
                         >
-                    </div>
-                    <!-- <p>The switch is {{ vif_value ? "ON" : "OFF" }}</p> -->
-                    <div class="card mt-4" v-if="vif_value">
-                        <div class="card-body">
-                            This card is conditionally rendered using v-if.
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            id="profile-tab"
+                            data-toggle="tab"
+                            href="#profile"
+                            role="tab"
+                            aria-controls="profile"
+                            aria-selected="false"
+                            >Looping (v-for)</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            id="contact-tab"
+                            data-toggle="tab"
+                            href="#contact"
+                            role="tab"
+                            aria-controls="contact"
+                            aria-selected="false"
+                            >Data Binding (v-bind)</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            id="v-on-tab"
+                            data-toggle="tab"
+                            href="#v-on"
+                            role="tab"
+                            aria-controls="v-on"
+                            aria-selected="false"
+                            >Event Handling (v-on)</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                    <div
+                        class="tab-pane fade show active"
+                        id="home"
+                        role="tabpanel"
+                        aria-labelledby="home-tab"
+                    >
+                        <div class="form-check form-switch">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                role="switch"
+                                id="flexSwitchCheckDefault"
+                                v-model="vif_value"
+                            />
+                            <label
+                                class="form-check-label"
+                                for="flexSwitchCheckDefault"
+                                >Toggle this switch element</label
+                            >
                         </div>
-                    </div>
-                </BTab>
-                <BTab title="v-for">
-                    <ul>
-                        <li v-for="buku in bukus" :key="buku">
-                            {{ buku }}
-                        </li>
-                    </ul>
-                </BTab>
-                <BTab title="v-model">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"
-                            >myText value : {{ myText }}</label
-                        >
-                        <input
-                            v-model="myText"
-                            type="text"
-                            class="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="This is two-way data binding"
-                        />
-                    </div>
-                </BTab>
-                <BTab title="v-on">
-                    <div class="row">
-                        <div class="col">
-                            <div v-on:click="clicked" class="card card-body">
-                                Click me
+                        <div class="card mt-4" v-if="vif_value">
+                            <div class="card-body">
+                                This card is conditionally rendered using v-if.
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card card-body">
-                                <div class="mb-3">
-                                    <label for="text" class="form-label"
-                                        >Input change event</label
-                                    >
-                                    <input
-                                        v-on:input="changed"
-                                        type="text"
-                                        class="form-control"
-                                        id="text"
-                                        placeholder="Type here"
-                                    />
+                    </div>
+                    <div
+                        class="tab-pane fade"
+                        id="profile"
+                        role="tabpanel"
+                        aria-labelledby="profile-tab"
+                    >
+                        <ul>
+                            <li v-for="buku in bukus" :key="buku">
+                                {{ buku }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div
+                        class="tab-pane fade"
+                        id="contact"
+                        role="tabpanel"
+                        aria-labelledby="contact-tab"
+                    >
+                        <div class="mb-3">
+                            <label
+                                for="exampleFormControlInput1"
+                                class="form-label"
+                                >myText value : {{ myText }}</label
+                            >
+                            <input
+                                v-model="myText"
+                                type="text"
+                                class="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="This is two-way data binding"
+                            />
+                        </div>
+                    </div>
+                    <div
+                        class="tab-pane fade"
+                        id="v-on"
+                        role="tabpanel"
+                        aria-labelledby="v-on-tab"
+                    >
+                        <div class="row">
+                            <div class="col">
+                                <div
+                                    v-on:click="clicked"
+                                    class="card card-body"
+                                >
+                                    Click me
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-body">
+                                    <div class="mb-3">
+                                        <label for="text" class="form-label"
+                                            >Input change event</label
+                                        >
+                                        <input
+                                            v-on:input="changed"
+                                            type="text"
+                                            class="form-control"
+                                            id="text"
+                                            placeholder="Type here"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div
+                                    v-on:mouseover="hovered"
+                                    class="card card-body"
+                                >
+                                    Hover me
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div
-                                v-on:mouseover="hovered"
-                                class="card card-body"
-                            >
-                                Hover me
-                            </div>
-                        </div>
                     </div>
-                </BTab>
-            </BTabs>
-        </BCard>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script lang="ts">
-import { BTab, BCard, BTabs, BCardText } from "bootstrap-vue-next";
 import { ref } from "vue";
 import { useToast } from "vue-toastification";
-
 export default {
     compatConfig: { MODE: 3 },
-    components: { BTab, BTabs, BCard, BCardText },
     setup() {
         const vif_value = ref(false);
         const myText = ref("");

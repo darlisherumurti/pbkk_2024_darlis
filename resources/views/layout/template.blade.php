@@ -37,6 +37,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     {{-- Font awesome 6 --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    {{-- Prism CSS --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet" />
     @if (@isset($page))
         @vite('resources/js/app.ts')
         {{-- ziggy helper --}}
@@ -44,7 +46,7 @@
         @inertiaHead
     @endif
     @stack('styles')
-    
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -136,6 +138,8 @@
     <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     {{-- lightbox2 --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    {{-- prism --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

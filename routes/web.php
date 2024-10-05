@@ -70,17 +70,23 @@ Route::prefix('/pertemuan5')->group(function(){
     });
 
     Route::prefix('/vue')->group(function(){
-        Route::get('/',[InertiaController::class,'index'])->name('vue.home');
-        Route::get('/buku',[InertiaController::class,'buku'])->name('vue.buku');
 
-        Route::prefix('/tutorial')->group(function(){
-            Route::inertia('/directive','Tutorial/Directive')->name('vue.tutorial.directive');
-        });
+    
         Route::resource('media', MediaController::class);
 
     });
 });
 
+Route::prefix('/pertemuan6')->group(function(){
+    Route::get('/',[InertiaController::class,'index'])->name('vue.home');
+    Route::get('/buku',[InertiaController::class,'buku'])->name('vue.buku');
+    Route::prefix('/tutorial')->group(function(){
+        Route::inertia('/directive','Tutorial/Directive',['title' => 'Vue Directive'])->name('vue.tutorial.directive');
+        Route::inertia('/reactive','Tutorial/Reactive',['title' => 'Vue Reactivity'])->name('vue.tutorial.reactive');
+        Route::inertia('/watch','Tutorial/Watch')->name('vue.tutorial.watch');
+        Route::inertia('/component','Tutorial/Component')->name('vue.tutorial.component');
+    });
+});
 
 Route::view('/api/schema','api.schema')->name('api.schema');
 // Route::fallback(fn() => redirect('/pertemuan5/home')->with('error', 'Halaman Tidak Ditemukan'));
