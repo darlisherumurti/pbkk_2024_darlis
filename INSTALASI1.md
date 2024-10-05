@@ -9,7 +9,7 @@ git clone https://github.com/darlisherumurti/pbkk_2024_darlis <nama folder>
 
 ```bash
 cd <nama folder>
-git checkout -b pertemuan5 origin/pertemuan5
+git checkout -b pertemuan6 origin/pertemuan5
 ```
 
 4. install dependency
