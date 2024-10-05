@@ -1,14 +1,15 @@
 @extends('layout.template')
 @if (@isset($page['props']['title']))
-    @section('title', $page['props']['title'] ?? 'Pertemuan 5')
+    @section('title', $page['props']['title'] ?? 'Pertemuan 6')
 @endif
 @section('sidebar')
     <x-menu-tree title="Pertemuan 6" icon="fa-brands fa-vuejs" :active="request()->is('pertemuan6*')">
         <x-menu-item icon="fas fa-home" :href="route('vue.home')" :active="request()->is('pertemuan6')">Home</x-menu-item>
         <x-menu-item icon="fas fa-book" :href="route('vue.buku')" :active="request()->is('pertemuan6/buku')">Buku</x-menu-item>
-        <x-menu-tree icon="fas fa-book" title="Tutorial" :active="request()->is('pertemuan6/tutorial*')">
+        <x-menu-tree icon="fas fa-book" title="Vue Basic" :active="request()->is('pertemuan6/tutorial*')">
         <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.directive')" :active="request()->is('pertemuan6/tutorial/directive')">Directive</x-menu-item>
         <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.component')" :active="request()->is('pertemuan6/tutorial/component')">Component</x-menu-item>
+        <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.lifecycle')" :active="request()->is('pertemuan6/tutorial/lifecycle')">Component Lifecycle</x-menu-item>
         <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.reactive')" :active="request()->is('pertemuan6/tutorial/reactive')">Reactivity</x-menu-item>
         <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.watcher')" :active="request()->is('pertemuan6/tutorial/watch')">Watcher</x-menu-item>
         </x-menu-tree>

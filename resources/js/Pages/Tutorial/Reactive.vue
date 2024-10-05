@@ -286,9 +286,3 @@ export default {
     </div>
 </template>
 <script lang="ts"></script>
-<style>
-pre,
-code {
-    max-width: 100%;
-}
-</style>
