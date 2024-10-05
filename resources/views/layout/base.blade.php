@@ -10,6 +10,7 @@
         <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.directive')" :active="request()->is('pertemuan6/tutorial/directive')">Directive</x-menu-item>
         <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.component')" :active="request()->is('pertemuan6/tutorial/component')">Component</x-menu-item>
         <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.reactive')" :active="request()->is('pertemuan6/tutorial/reactive')">Reactivity</x-menu-item>
+        <x-menu-item icon="fas fa-home" :href="route('vue.tutorial.watcher')" :active="request()->is('pertemuan6/tutorial/watcher')">Watcher</x-menu-item>
         </x-menu-tree>
     </x-menu-tree>
     <x-menu-tree title="Pertemuan 5" icon="fas fa-tachometer-alt" :active="request()->is('pertemuan5/vue/media*')">

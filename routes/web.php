@@ -83,8 +83,8 @@ Route::prefix('/pertemuan6')->group(function(){
     Route::prefix('/tutorial')->group(function(){
         Route::inertia('/directive','Tutorial/Directive',['title' => 'Vue Directive'])->name('vue.tutorial.directive');
         Route::inertia('/reactive','Tutorial/Reactive',['title' => 'Vue Reactivity'])->name('vue.tutorial.reactive');
-        Route::inertia('/watch','Tutorial/Watch')->name('vue.tutorial.watch');
-        Route::inertia('/component','Tutorial/Component')->name('vue.tutorial.component');
+        Route::inertia('/watch','Tutorial/Watch',['title' => 'Vue Watcher'])->name('vue.tutorial.watcher');
+        Route::inertia('/component','Tutorial/Component',['title' => 'Vue Component'])->name('vue.tutorial.component');
     });
 });
 
