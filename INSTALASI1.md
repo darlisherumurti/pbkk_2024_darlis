@@ -1,4 +1,4 @@
-1. pastikan sudah ada php dan composer terinstall.
+1. pastikan sudah ada php, composer dan node package manager (npm/yarn/pnpm..) terinstall.
 2. clone repo ini
 
 ```bash
@@ -16,6 +16,7 @@ git checkout -b pertemuan5 origin/pertemuan5
 
 ```bash
 composer install
+npm install
 ```
 
 4. ganti atau copy file `.env.example` menjadi `.env`
@@ -38,7 +39,19 @@ php artisan db:seed
 php artisan key:generate
 ```
 
-9. jalankan perintah untuk memulai
+9. jalankan perintah build (vue & javascript)
+
+```bash
+npm run build
+```
+
+10. jalankan perintah storage link
+
+```
+php artisan storage:link
+```
+
+11. jalankan perintah untuk memulai
 
 ```bash
  php artisan serve
