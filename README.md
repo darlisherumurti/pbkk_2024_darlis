@@ -9,3 +9,10 @@ Lakukan ini untuk setiap checkout/ganti branch
 ```bash
 php artisan migrate:refresh --seed
 ```
+
+Build front end terlebih dahulu untuk menggunakan vue
+
+```bash
+npm run build
+```
+
